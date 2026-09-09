@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Exam Information Display - Muhyiddin School</title>
+
+
+<style type="text/css">
+body {
+	padding-top: 200px;
+    font-weight: bold;
+	background-color: #000;
+}
+
+/* AM / PM colors */
+.pm, .am {
+    color: #000;
+    font-weight: bold;
+    display: block;
+    font-size: 100px;
+}
+
+.placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+.clockdate-wrapper {
+    background-color: #fff;
+    padding: 25px;
+    width: 720px;
+    text-align: center;
+    border-radius: 30px;
+    margin: 20px auto;
+}
+
+#clock {
+    font-family: sans-serif;
+    font-size: 140px;
+    color: #000;
+}
+
+#date {
+    letter-spacing: 3px;
+    font-size: 50px;
+    font-family: Arial, sans-serif;
+    color: #000;
+}
+
+.info {
+    width: 900px;
+    margin: 0 auto;
+    font-size: 40px;
+    border: 5px solid #000;
+    border-radius: 30px;
+    padding: 20px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 12px;
+    border-bottom: 1px solid #ccc;
+}
+
+.row:last-child {
+    border-bottom: none;
+}
+
+.row span[contenteditable="true"] {
+    background-color: #dddddd;
+    padding: 5px 10px;
+    border-radius: 8px;
+    min-width: 300px;
+}
+
+.row span[contenteditable="true"]:focus {
+    background-color: #ffcccc;
+    outline: 3px solid #4CAF50;
+}
+
+.controls {
+    text-align: center;
+    margin-top: 50px;
+}
+
+button {
+    background-color: #dddddd;
+    border-radius: 50px;
+    border: 4px solid #000000;
+    font-size: 16px;
+    padding: 5px 10px;
+    cursor: pointer;
+}
+
+#dev {
+    color: #cccccc;
+    text-align: center;
+    margin: 50px 0;
+}
+</style>
+
+<script type="text/javascript">
+
+function startTime() {
+    var today = new Date();
+
+    var hr = today.getHours();
+    var min = today.getMinutes();
+    var sec = today.getSeconds();
+
+    var ap = (hr < 12)
+        ? "<span class='am'>AM</span>"
+        : "<span class='pm'>PM</span>";
+
+    hr = (hr == 0) ? 12 : hr;
+    hr = (hr > 12) ? hr - 12 : hr;
+
+    hr = checkTime(hr);
+    min = checkTime(min);
+    sec = checkTime(sec);
+
+    document.getElementById("clock").innerHTML =
+        hr + ":" + min + ":" + sec + " " + ap;
+
+    var months = [
+        'January','February','March','April','May','June',
+        'July','August','September','October','November','December'
+    ];
+
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+    var d = days[today.getDay()];
+    var day = today.getDate();
+    var month = months[today.getMonth()];
+    var year = today.getFullYear();
+
+    document.getElementById("date").innerHTML =
+        d + ", " + day + " " + month + " " + year;
+
+    setTimeout(startTime, 500);
+}
+
+function checkTime(i) {
+    return (i < 10) ? "0" + i : i;
+}
+
+
+
+
+
+window.onload = function() {
+    startTime();
+};
+
+</script>
+</head>
+
+<body>
+<a href="../index.html" style="position:fixed;top:10px;left:10px;z-index:9999;width:200px;"><img src="../imgs/banner_logo_round_border.png" style="width:100%;display:block;" alt="Banner Logo"></a>
+<div class="clockdate-wrapper">
+    <div id="clock"></div>
+    <div id="date"></div>
+</div>
+
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<p id="dev">Developed by Muhyiddin School IT Department</p>
+
+</body>
+</html>

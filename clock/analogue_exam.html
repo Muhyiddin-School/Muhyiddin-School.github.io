@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Clock + Exam Dashboard</title>
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body{
+    min-height:100vh;
+    background:#000;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard{
+
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    gap:20px;
+
+    padding:20px;
+}
+
+
+/* =========================
+   CLOCK AREA
+========================= */
+
+.clock-wrap{
+
+    width:50%;
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    min-width:0;
+}
+
+
+/* =========================
+   CLOCK
+========================= */
+
+.clock{
+
+    width:min(
+        100%,
+        calc(100vh - 40px)
+    );
+
+    aspect-ratio:1 / 1;
+
+    border-radius:50%;
+
+    position:relative;
+
+    background:
+        radial-gradient(
+            circle,
+            #ffffff 0%,
+            #ececec 70%,
+            #d5d5d5 100%
+        );
+
+    border:10px solid #222;
+
+    box-shadow:
+        0 0 40px rgba(0,0,0,.5),
+        inset 0 0 25px rgba(0,0,0,.15);
+
+    overflow:hidden;
+
+    flex-shrink:0;
+}
+
+
+/* =========================
+   NUMBERS
+========================= */
+
+.number{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    font-size:
+        clamp(
+            1.5rem,
+            4vw,
+            4rem
+        );
+
+    font-weight:bold;
+
+    color:#222;
+
+    text-align:center;
+}
+
+.number span{
+
+    display:inline-block;
+
+    transform:
+        translateY(30px);
+}
+
+
+/* =========================
+   TICKS
+========================= */
+
+.tick{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:4px;
+    height:48%;
+
+    transform-origin:
+        50% 100%;
+}
+
+.tick::before{
+
+    content:"";
+
+    display:block;
+
+    width:2px;
+    height:10px;
+
+    margin:auto;
+
+    background:#555;
+}
+
+.tick.major::before{
+
+    width:4px;
+    height:18px;
+
+    background:#111;
+}
+
+
+/* =========================
+   CLOCK HANDS
+========================= */
+
+.hand{
+
+    position:absolute;
+
+    left:50%;
+    bottom:50%;
+
+    transform-origin:
+        bottom center;
+
+    border-radius:999px;
+
+    z-index:10;
+}
+
+.hour{
+
+    width:20px;
+    height:30%;
+
+    background:#111;
+}
+
+.minute{
+
+    width:13px;
+    height:40%;
+
+    background:#222;
+}
+
+.second{
+
+    width:4px;
+    height:43%;
+
+    background:#e11d48;
+}
+
+
+/* =========================
+   CENTER
+========================= */
+
+.center{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:18px;
+    height:18px;
+
+    transform:
+        translate(-50%,-50%);
+
+    background:#111;
+
+    border-radius:50%;
+
+    z-index:20;
+}
+
+
+/* =========================
+   DIGITAL TIME
+========================= */
+
+.digital{
+
+    position:absolute;
+
+    left:50%;
+    bottom:38%;
+
+    transform:
+        translateX(-50%);
+
+    font-size:
+        clamp(
+            1.2rem,
+            3vw,
+            2.5rem
+        );
+
+    font-weight:bold;
+
+    color:#fff;
+
+    background:#333;
+
+    border-radius:20px;
+
+    padding:
+        2px 8px;
+
+    font-family:
+        Consolas,
+        monospace;
+
+    white-space:nowrap;
+
+    z-index:50;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+.date{
+
+    position:absolute;
+
+    left:50%;
+    bottom:28%;
+
+    transform:
+        translateX(-50%);
+
+    font-size:
+        clamp(
+            1rem,
+            2vw,
+            2rem
+        );
+
+    font-weight:bold;
+
+    color:#fff;
+
+    background:#333;
+
+    border-radius:20px;
+
+    padding:
+        2px 8px;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    white-space:nowrap;
+
+    z-index:50;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+}
+
+
+/* =========================
+   HIDE DIGITAL + DATE
+========================= */
+
+.clock.hide-info .digital,
+.clock.hide-info .date{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+}
+
+
+/* =========================
+   TOGGLE BUTTON
+========================= */
+
+.toggle-info{
+
+    position:fixed;
+
+    top:10px;
+    right:10px;
+
+    z-index:99999;
+
+    width:34px;
+    height:34px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#333;
+
+    color:#fff;
+
+    font-size:16px;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    opacity:.65;
+
+    transition:
+        background .2s ease,
+        opacity .2s ease,
+        transform .2s ease;
+}
+
+.toggle-info:hover{
+
+    background:#555;
+
+    opacity:1;
+
+    transform:scale(1.08);
+}
+
+.toggle-info:active{
+
+    transform:scale(.95);
+}
+
+
+/* =========================
+   TABLE AREA
+========================= */
+
+.table-wrap{
+
+    width:50%;
+    height:100%;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    min-width:0;
+
+    overflow:hidden;
+}
+
+
+/* =========================
+   INFORMATION TABLE
+========================= */
+
+.info{
+
+    width:100%;
+
+    max-width:none;
+
+    background:#fff;
+
+    border-radius:15px;
+
+    padding:
+        clamp(
+            10px,
+            1.5vw,
+            25px
+        );
+
+    border:3px solid #000;
+
+    font-size: 35px;
+}
+
+
+/* =========================
+   TABLE ROW
+========================= */
+
+.row{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:15px;
+
+    padding:
+        clamp(
+            8px,
+            1vh,
+            15px
+        )
+        5px;
+
+    border-bottom:
+        1px solid #ddd;
+
+    font-weight:bold;
+
+    color:#000;
+}
+
+.row:last-child{
+
+    border-bottom:none;
+}
+
+
+/* =========================
+   EDITABLE VALUES
+========================= */
+
+.row span[contenteditable="true"]{
+
+    background:#fff;
+
+    padding:
+        4px 8px;
+
+    border-radius:6px;
+
+    min-width:120px;
+
+    text-align:right;
+
+    outline:none;
+}
+
+
+/* =========================
+   TABLE HEADINGS
+========================= */
+
+.row_heading{
+
+    font-size:
+        clamp(
+            1rem,
+            2vw,
+            2rem
+        );
+
+    white-space:nowrap;
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo{
+
+    position:fixed;
+
+    top:10px;
+    left:10px;
+
+    z-index:9999;
+
+    width:200px;
+}
+
+.logo img{
+
+    width:100%;
+
+    display:block;
+}
+
+
+/* =========================
+   MEDIUM SCREENS
+========================= */
+
+@media(max-width:1100px){
+
+    .dashboard{
+
+        gap:10px;
+
+        padding:10px;
+    }
+
+
+    .clock{
+
+        border-width:7px;
+    }
+
+
+    .info{
+
+        padding:10px;
+
+        border-width:2px;
+    }
+
+
+    .row{
+
+        gap:8px;
+
+        padding:7px 3px;
+    }
+
+
+    .row span[contenteditable="true"]{
+
+        min-width:90px;
+    }
+
+
+    .logo{
+
+        width:150px;
+    }
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:700px){
+
+    body{
+
+        overflow:auto;
+
+        align-items:flex-start;
+    }
+
+
+    .dashboard{
+
+        width:100%;
+
+        height:auto;
+
+        min-height:100vh;
+
+        flex-direction:column;
+
+        gap:20px;
+
+        padding:10px;
+    }
+
+
+    /* CLOCK */
+
+    .clock-wrap{
+
+        width:100%;
+
+        height:auto;
+
+        flex:none;
+    }
+
+
+    .clock{
+
+        width:
+            min(
+                95vw,
+                95vh
+            );
+
+        height:auto;
+
+        aspect-ratio:1 / 1;
+
+        border-width:6px;
+    }
+
+
+    /* TABLE */
+
+    .table-wrap{
+
+        width:100%;
+
+        height:auto;
+
+        flex:none;
+
+        overflow:visible;
+    }
+
+
+    .info{
+
+        width:100%;
+
+        font-size:18px;
+    }
+
+
+    .row_heading{
+
+        font-size:18px;
+    }
+
+
+    .row span[contenteditable="true"]{
+
+        min-width:80px;
+
+        font-size:16px;
+    }
+
+
+    .digital{
+
+        font-size:7vw;
+    }
+
+
+    .date{
+
+        font-size:4vw;
+    }
+
+
+    .logo{
+
+        width:120px;
+    }
+
+}
+
+
+/* =========================
+   MOBILE TOGGLE BUTTON
+========================= */
+
+@media(max-width:700px){
+
+    .toggle-info{
+
+        width:30px;
+        height:30px;
+
+        top:8px;
+        right:8px;
+
+        font-size:14px;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     TOGGLE BUTTON
+========================= -->
+
+<button
+    class="toggle-info"
+    id="toggleInfo"
+    title="Show / Hide time and date"
+    aria-label="Show or hide digital time and date"
+>
+    ◉
+</button>
+
+
+<!-- =========================
+     DASHBOARD
+========================= -->
+
+<div class="dashboard">
+
+
+    <!-- =====================
+         LOGO
+    ====================== -->
+
+    <a href="../index.html" class="logo">
+
+        <img
+            src="../imgs/banner_logo_round_border.png"
+            alt="Banner Logo"
+        >
+
+    </a>
+
+
+    <!-- =====================
+         CLOCK
+    ====================== -->
+
+    <div class="clock-wrap">
+
+        <div
+            class="clock"
+            id="clock"
+        >
+
+            <!-- HANDS -->
+
+            <div
+                class="hour hand"
+                id="hour"
+            ></div>
+
+
+            <div
+                class="minute hand"
+                id="minute"
+            ></div>
+
+
+            <div
+                class="second hand"
+                id="second"
+            ></div>
+
+
+            <!-- CENTER -->
+
+            <div class="center"></div>
+
+
+            <!-- DIGITAL TIME -->
+
+            <div
+                class="digital"
+                id="digital"
+            ></div>
+
+
+            <!-- DATE -->
+
+            <div
+                class="date"
+                id="date"
+            ></div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================
+         TABLE
+    ====================== -->
+
+    <div class="table-wrap">
+
+        <div class="info">
+
+
+            <div class="row">
+
+                <span class="row_heading">
+                    Examination:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                >
+                    SSC & IGCSE
+                </span>
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="row_heading">
+                    Centre Name:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                >
+                    Muhyiddin School
+                </span>
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="row_heading">
+                    Centre Number:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                >
+                    MV102
+                </span>
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="row_heading">
+                    Syllabus Name:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                ></span>
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="row_heading">
+                    Syllabus Code:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                ></span>
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="row_heading">
+                    Date:
+                </span>
+
+                <span
+                    id="examDate"
+                    spellcheck="false"
+                    contenteditable="true"
+                >
+                    17 / 06 / 2026
+                </span>
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="row_heading">
+                    Start Time:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                >
+                    00:00 AM
+                </span>
+
+            </div>
+
+
+            <div class="row">
+
+                <span class="row_heading">
+                    End Time:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                >
+                    00:00 AM
+                </span>
+
+            </div>
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<script>
+
+
+/* =========================
+   CLOCK NUMBERS
+========================= */
+
+const clock =
+    document.getElementById("clock");
+
+
+for(let i = 1; i <= 12; i++){
+
+    const n =
+        document.createElement("div");
+
+
+    n.className =
+        "number";
+
+
+    n.style.transform =
+        `rotate(${i * 30}deg)`;
+
+
+    const s =
+        document.createElement("span");
+
+
+    s.textContent =
+        i;
+
+
+    s.style.transform =
+        `translateY(30px) rotate(${-i * 30}deg)`;
+
+
+    n.appendChild(s);
+
+
+    clock.appendChild(n);
+
+}
+
+
+/* =========================
+   TICKS
+========================= */
+
+for(let i = 0; i < 60; i++){
+
+    const t =
+        document.createElement("div");
+
+
+    t.className =
+        "tick" +
+        (
+            i % 5 === 0
+            ? " major"
+            : ""
+        );
+
+
+    t.style.transform =
+        `translate(-50%,-100%) rotate(${i * 6}deg)`;
+
+
+    clock.appendChild(t);
+
+}
+
+
+/* =========================
+   CLOCK ELEMENTS
+========================= */
+
+const hour =
+    document.getElementById("hour");
+
+
+const minute =
+    document.getElementById("minute");
+
+
+const second =
+    document.getElementById("second");
+
+
+const digital =
+    document.getElementById("digital");
+
+
+const date =
+    document.getElementById("date");
+
+
+const examDate =
+    document.getElementById("examDate");
+
+
+/* =========================
+   TOGGLE DIGITAL TIME + DATE
+========================= */
+
+const toggleInfo =
+    document.getElementById("toggleInfo");
+
+
+toggleInfo.addEventListener(
+    "click",
+    function(){
+
+        clock.classList.toggle(
+            "hide-info"
+        );
+
+        /*
+           Change button symbol
+           depending on state.
+        */
+
+        if(
+            clock.classList.contains(
+                "hide-info"
+            )
+        ){
+
+            toggleInfo.textContent = "○";
+
+            toggleInfo.title =
+                "Show time and date";
+
+        }
+        else{
+
+            toggleInfo.textContent = "◉";
+
+            toggleInfo.title =
+                "Hide time and date";
+
+        }
+
+    }
+);
+
+
+/* =========================
+   UPDATE CLOCK
+========================= */
+
+function update(){
+
+    const now =
+        new Date();
+
+
+    /* =====================
+       TIME CALCULATION
+    ====================== */
+
+    const sec =
+        now.getSeconds();
+
+
+    const min =
+        now.getMinutes() +
+        sec / 60;
+
+
+    const hr =
+        (now.getHours() % 12) +
+        min / 60;
+
+
+    /* =====================
+       HOUR HAND
+    ====================== */
+
+    hour.style.transform =
+        `translateX(-50%) rotate(${hr * 30}deg)`;
+
+
+    /* =====================
+       MINUTE HAND
+    ====================== */
+
+    minute.style.transform =
+        `translateX(-50%) rotate(${min * 6}deg)`;
+
+
+    /* =====================
+       SECOND HAND
+    ====================== */
+
+    second.style.transform =
+        `translateX(-50%) rotate(${sec * 6}deg)`;
+
+
+    /* =====================
+       DIGITAL TIME
+    ====================== */
+
+    digital.textContent =
+        now.toLocaleTimeString();
+
+
+    /* =====================
+       CLOCK DATE
+    ====================== */
+
+    date.textContent =
+        now.toLocaleDateString(
+            undefined,
+            {
+                weekday:"short",
+                day:"numeric",
+                month:"short",
+                year:"numeric"
+            }
+        );
+
+
+    /* =====================
+       EXAM DATE
+
+       FORMAT:
+       2 / 04 / 2026
+    ====================== */
+
+    if(examDate){
+
+        const day =
+            now.getDate();
+
+
+        const month =
+            String(
+                now.getMonth() + 1
+            ).padStart(
+                2,
+                "0"
+            );
+
+
+        const year =
+            now.getFullYear();
+
+
+        examDate.textContent =
+            `${day} / ${month} / ${year}`;
+    }
+
+
+    /* =====================
+       SYNCHRONIZE
+    ====================== */
+
+    setTimeout(
+        update,
+        1000 -
+        now.getMilliseconds()
+    );
+
+}
+
+
+/* =========================
+   START
+========================= */
+
+update();
+
+</script>
+
+</body>
+</html>

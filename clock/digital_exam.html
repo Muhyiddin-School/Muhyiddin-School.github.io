@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Exam Information Display - Muhyiddin School</title>
+
+
+<style type="text/css">
+body {
+    font-weight: bold;
+    margin: 0;
+    padding: 10px;
+    font-family: Arial, sans-serif;
+    background: #000000;
+}
+
+/* CLOCK */
+.clockdate-wrapper {
+    background-color: #333;
+    padding: 20px;
+    max-width: 90%;
+    width: 600px;
+    text-align: center;
+    border-radius: 20px;
+    margin: 20px auto;
+}
+
+#clock {
+    font-size: clamp(40px, 6vw, 100px);
+    color: #fff;
+}
+
+#date {
+    font-size: clamp(18px, 3vw, 40px);
+    color: #fff;
+    letter-spacing: 2px;
+}
+
+/* AM PM */
+.pm, .am {
+    color: #ddd;
+    font-weight: bold;
+    display: inline;
+    font-size: inherit;
+}
+
+/* MAIN INFO BOX */
+.info {
+    width: 95%;
+    max-width: 900px;
+    margin: 0 auto;
+    font-size: clamp(18px, 2.5vw, 32px);
+    border: 3px solid #000;
+    border-radius: 20px;
+    padding: 15px;
+    background: white;
+    box-sizing: border-box;
+}
+
+/* ROW LAYOUT */
+.row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 8px;
+    border-bottom: 1px solid #ccc;
+    gap: 10px;
+	color: #000;
+}
+
+/* LEFT LABEL */
+.row span:first-child {
+    flex: 1;
+}
+
+/* RIGHT VALUE */
+.row span[contenteditable="true"] {
+    flex: 1;
+	spellcheck="false"
+    background-color: #fff;
+    padding: 5px 8px;
+    border-radius: 6px;
+    min-width: 120px;
+    text-align: right;
+    word-break: break-word;
+}
+
+/* PLACEHOLDER */
+.placeholder {
+    color: #888;
+    font-style: italic;
+}
+
+/* BUTTON */
+.controls {
+    text-align: center;
+    margin-top: 20px;
+}
+
+button {
+    background-color: #252525;
+    border-radius: 20px;
+    border: 2px solid #000;
+    font-size: 14px;
+    padding: 8px 16px;
+    cursor: pointer;
+}
+
+/* MOBILE FIX */
+@media (max-width: 600px) {
+    .row {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .row span[contenteditable="true"] {
+        text-align: left;
+        width: 100%;
+    }
+}
+
+#dev {
+	text-align:center;
+	margin-top:20px;
+
+}
+</style>
+
+<script type="text/javascript">
+
+
+
+function startTime() {
+    var today = new Date();
+
+    var hr = today.getHours();
+    var min = today.getMinutes();
+    var sec = today.getSeconds();
+
+    var ap = (hr < 12)
+        ? "<span class='am'>AM</span>"
+        : "<span class='pm'>PM</span>";
+
+    hr = (hr == 0) ? 12 : hr;
+    hr = (hr > 12) ? hr - 12 : hr;
+
+    hr = checkTime(hr);
+    min = checkTime(min);
+    sec = checkTime(sec);
+
+    document.getElementById("clock").innerHTML =
+        hr + ":" + min + ":" + sec + " " + ap;
+
+    var months = [
+        'January','February','March','April','May','June',
+        'July','August','September','October','November','December'
+    ];
+
+    var days = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+    var d = days[today.getDay()];
+    var day = today.getDate();
+    var month = months[today.getMonth()];
+    var year = today.getFullYear();
+
+    document.getElementById("date").innerHTML =
+        d + ", " + day + " " + month + " " + year;
+		
+		
+		document.getElementById("examDate").textContent =
+    checkTime(day) + "/" +
+    checkTime(today.getMonth() + 1) + "/" +
+    year;
+
+    setTimeout(startTime, 500);
+}
+
+function checkTime(i) {
+    return (i < 10) ? "0" + i : i;
+}
+
+/* ===== PLACEHOLDER HANDLING ===== */
+
+function loadSavedData() {
+    document.querySelectorAll('[contenteditable="true"]').forEach(function(el) {
+
+        let key = el.dataset.key;
+        let saved = localStorage.getItem(key);
+
+        if (saved !== null && saved.trim() !== "") {
+            el.innerText = saved;
+        }
+
+        if (el.innerText.trim() === "") {
+            el.classList.add("placeholder");
+            el.innerText = "click to edit";
+        }
+
+        el.addEventListener("focus", function() {
+            if (el.innerText === "click to edit") {
+                el.innerText = "";
+                el.classList.remove("placeholder");
+            }
+        });
+
+        el.addEventListener("blur", function() {
+
+            let value = el.innerText.trim();
+
+            if (value === "" || value === "click to edit") {
+                el.innerText = "click to edit";
+                el.classList.add("placeholder");
+                localStorage.removeItem(key);
+            } else {
+                el.classList.remove("placeholder");
+                localStorage.setItem(key, value);
+            }
+        });
+    });
+}
+
+/* RESET */
+function resetTable() {
+    if (confirm("Reset all fields?")) {
+        localStorage.clear();
+        location.reload();
+    }
+}
+
+window.onload = function() {
+    startTime();
+    loadSavedData();
+};
+
+</script>
+</head>
+
+<body>
+<a href="../index.html" style="position:fixed;top:10px;left:10px;z-index:9999;width:200px;"><img src="../imgs/banner_logo_round_border.png" style="width:100%;display:block;" alt="Banner Logo"></a>
+<div class="clockdate-wrapper">
+    <div id="clock"></div>
+    <div id="date"></div>
+</div>
+
+<div class="info">
+
+    <div class="row">
+        <span>Examination:</span>
+        <span spellcheck="false" contenteditable="true" data-key="examination">SSC & IGCSE</span>
+    </div>
+
+    <div class="row">
+        <span>Centre Name:</span>
+        <span spellcheck="false" contenteditable="true" data-key="centreName">Muhyiddin School</span>
+    </div>
+
+    <div class="row">
+        <span>Centre Number:</span>
+        <span spellcheck="false" contenteditable="true" data-key="centreNumber">MV102</span>
+    </div>
+
+    <div class="row">
+        <span>Syllabus Name:</span>
+        <span spellcheck="false" contenteditable="true" data-key="syllabusName"></span>
+    </div>
+
+    <div class="row">
+        <span>Syllabus Code:</span>
+        <span spellcheck="false" contenteditable="true" data-key="syllabusCode"></span>
+    </div>
+
+    <div class="row">
+        <span>Date:</span>
+        <span spellcheck="false" contenteditable="true" data-key="examDate" id="examDate">17/06/2026</span>
+    </div>
+
+    <div class="row">
+        <span>Starting Time:</span>
+        <span spellcheck="false" contenteditable="true" data-key="startTimeExam">00:00 AM</span>
+    </div>
+
+    <div class="row">
+        <span>Finishing Time:</span>
+        <span spellcheck="false" contenteditable="true" data-key="finishTimeExam">00:00 AM</span>
+    </div>
+
+</div>
+
+<div class="controls">
+    <button onclick="resetTable()">Reset to Defaults</button>
+</div>
+
+<center><p id="dev">Developed by Muhyiddin School IT Department</p><center/>
+
+</body>
+</html>

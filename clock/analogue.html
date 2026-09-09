@@ -1,0 +1,844 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analog Clock</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html,
+body{
+    width:100%;
+    height:100%;
+}
+
+body{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background:#000;
+    font-family:Arial,Helvetica,sans-serif;
+    padding:10px;
+    overflow:hidden;
+}
+
+
+/* =========================
+   CLOCK
+========================= */
+
+.clock{
+
+    width:min(
+        calc(100vw - 20px),
+        calc(100vh - 20px)
+    );
+
+    height:min(
+        calc(100vw - 20px),
+        calc(100vh - 20px)
+    );
+
+    border-radius:50%;
+    position:relative;
+
+    background:radial-gradient(
+        circle,
+        #ffffff 0%,
+        #ececec 70%,
+        #d5d5d5 100%
+    );
+
+    border:10px solid #222;
+
+    box-shadow:
+        0 0 40px rgba(0,0,0,.5),
+        inset 0 0 25px rgba(0,0,0,.15);
+
+    overflow:hidden;
+    flex-shrink:0;
+}
+
+
+/* =========================
+   NUMBERS
+========================= */
+
+.number{
+
+    position:absolute;
+
+    width:100%;
+    height:100%;
+
+    font-size:clamp(
+        1.5rem,
+        5vw,
+        4rem
+    );
+
+    font-weight:bold;
+
+    color:#222;
+
+    text-align:center;
+}
+
+.number span{
+
+    display:inline-block;
+
+    transform:translateY(30px);
+}
+
+
+/* =========================
+   TICKS
+========================= */
+
+.tick{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:4px;
+    height:48%;
+
+    transform-origin:50% 100%;
+}
+
+.tick::before{
+
+    content:"";
+
+    display:block;
+
+    width:2px;
+    height:10px;
+
+    margin:auto;
+
+    background:#555;
+}
+
+.tick.major::before{
+
+    width:4px;
+    height:18px;
+
+    background:#111;
+}
+
+
+/* =========================
+   CLOCK HANDS
+========================= */
+
+.hand{
+
+    position:absolute;
+
+    left:50%;
+    bottom:50%;
+
+    transform-origin:bottom center;
+
+    border-radius:999px;
+
+    z-index:10;
+}
+
+.hour{
+
+    width:20px;
+    height:30%;
+
+    background:#111;
+}
+
+.minute{
+
+    width:10px;
+    height:42%;
+
+    background:#222;
+}
+
+.second{
+
+    width:2px;
+    height:43%;
+
+    background:#e11d48;
+}
+
+
+/* =========================
+   CENTER
+========================= */
+
+.center{
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:22px;
+    height:22px;
+
+    transform:translate(-50%,-50%);
+
+    background:#111;
+
+    border-radius:50%;
+
+    z-index:20;
+}
+
+.center::after{
+
+    content:"";
+
+    position:absolute;
+
+    left:50%;
+    top:50%;
+
+    width:9px;
+    height:9px;
+
+    transform:translate(-50%,-50%);
+
+    border-radius:50%;
+
+    background:#e11d48;
+}
+
+
+/* =========================
+   DIGITAL TIME
+========================= */
+
+.digital{
+
+    position:absolute;
+
+    left:50%;
+    bottom:25%;
+
+    transform:translateX(-50%);
+
+    font-size:clamp(
+        1rem,
+        3vw,
+        2.5rem
+    );
+
+    font-weight:bold;
+
+    color:#fff;
+
+    background:#333;
+
+    border-radius:20px;
+
+    padding:2px 8px;
+
+    font-family:Consolas,monospace;
+
+    white-space:nowrap;
+
+    z-index:50;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+}
+
+
+/* =========================
+   DATE
+========================= */
+
+.date{
+
+    position:absolute;
+
+    left:50%;
+    bottom:35%;
+
+    transform:translateX(-50%);
+
+    font-size:clamp(
+        1rem,
+        3vw,
+        2.5rem
+    );
+
+    font-weight:bold;
+
+    color:#fff;
+
+    background:#333;
+
+    border-radius:20px;
+
+    padding:2px 8px;
+
+    font-family:Arial,Helvetica,sans-serif;
+
+    white-space:nowrap;
+
+    z-index:50;
+
+    transition:
+        opacity .25s ease,
+        visibility .25s ease;
+}
+
+
+/* =========================
+   HIDE DIGITAL + DATE
+========================= */
+
+.clock.hide-info .digital,
+.clock.hide-info .date{
+
+    opacity:0;
+
+    visibility:hidden;
+
+    pointer-events:none;
+}
+
+
+/* =========================
+   TOP-RIGHT TOGGLE BUTTON
+========================= */
+
+.toggle-info{
+
+    position:absolute;
+
+    right:3%;
+    top:3%;
+
+    width:30px;
+    height:30px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:#151515;
+
+    color:#fff;
+
+    font-size:14px;
+
+    cursor:pointer;
+
+    z-index:100;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    box-shadow:
+        0 2px 8px rgba(0,0,0,.4);
+
+    transition:
+        background .2s ease,
+        transform .2s ease;
+}
+
+.toggle-info:hover{
+
+    background:#111;
+
+    transform:scale(1.08);
+}
+
+.toggle-info:active{
+
+    transform:scale(.95);
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo{
+
+    position:fixed;
+
+    top:10px;
+    left:10px;
+
+    z-index:9999;
+
+    width:200px;
+}
+
+.logo img{
+
+    width:100%;
+
+    display:block;
+}
+
+
+/* =========================
+   SMALL SCREENS
+========================= */
+
+@media(max-width:600px){
+
+    body{
+        padding:5px;
+    }
+
+    .clock{
+
+        width:min(
+            calc(100vw - 10px),
+            calc(100vh - 10px)
+        );
+
+        height:min(
+            calc(100vw - 10px),
+            calc(100vh - 10px)
+        );
+
+        border-width:6px;
+    }
+
+    .number{
+        font-size:1.5rem;
+    }
+
+    .number span{
+        transform:translateY(20px);
+    }
+
+    .hour{
+        width:12px;
+    }
+
+    .minute{
+        width:7px;
+    }
+
+    .second{
+        width:2px;
+    }
+
+    .center{
+        width:16px;
+        height:16px;
+    }
+
+    .center::after{
+        width:7px;
+        height:7px;
+    }
+
+    .digital{
+        font-size:8vw;
+    }
+
+    .date{
+        font-size:4vw;
+    }
+
+    .toggle-info{
+
+        width:26px;
+        height:26px;
+
+        font-size:12px;
+
+        right:3%;
+        top:3%;
+    }
+
+    .logo{
+        width:100px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     LOGO
+========================= -->
+
+<a href="../index.html" class="logo">
+
+    <img
+        src="../imgs/banner_logo_round_border.png"
+        alt="Banner Logo"
+    >
+
+</a>
+
+
+<!-- =========================
+     CLOCK
+========================= -->
+
+<div class="clock" id="clock">
+
+
+    <!-- HOUR HAND -->
+
+    <div
+        class="hour hand"
+        id="hour">
+    </div>
+
+
+    <!-- MINUTE HAND -->
+
+    <div
+        class="minute hand"
+        id="minute">
+    </div>
+
+
+    <!-- SECOND HAND -->
+
+    <div
+        class="second hand"
+        id="second">
+    </div>
+
+
+    <!-- CENTER -->
+
+    <div class="center"></div>
+
+
+    <!-- DIGITAL TIME -->
+
+    <div
+        class="digital"
+        id="digital">
+    </div>
+
+
+    <!-- DATE -->
+
+    <div
+        class="date"
+        id="date">
+    </div>
+
+
+    <!-- =========================
+         VISIBILITY BUTTON
+    ========================== -->
+
+   
+
+</div>
+
+ <button
+        class="toggle-info"
+        id="toggleInfo"
+        type="button"
+        title="Show / Hide time and date"
+        aria-label="Show or hide digital time and date"
+    >
+        
+    </button>
+
+
+<script>
+
+/* =========================
+   CLOCK
+========================= */
+
+const clock =
+    document.getElementById("clock");
+
+
+/* =========================
+   CREATE NUMBERS
+========================= */
+
+for(let i = 1; i <= 12; i++){
+
+    const number =
+        document.createElement("div");
+
+    number.className =
+        "number";
+
+    number.style.transform =
+        `rotate(${i * 30}deg)`;
+
+
+    const span =
+        document.createElement("span");
+
+    span.textContent =
+        i;
+
+    span.style.transform =
+        `translateY(30px) rotate(${-i * 30}deg)`;
+
+
+    number.appendChild(span);
+
+    clock.appendChild(number);
+}
+
+
+/* =========================
+   CREATE TICKS
+========================= */
+
+for(let i = 0; i < 60; i++){
+
+    const tick =
+        document.createElement("div");
+
+    tick.className =
+        "tick" +
+        (
+            i % 5 === 0
+            ? " major"
+            : ""
+        );
+
+    tick.style.transform =
+        `translate(-50%,-100%) rotate(${i * 6}deg)`;
+
+
+    clock.appendChild(tick);
+}
+
+
+/* =========================
+   ELEMENTS
+========================= */
+
+const hour =
+    document.getElementById("hour");
+
+const minute =
+    document.getElementById("minute");
+
+const second =
+    document.getElementById("second");
+
+const digital =
+    document.getElementById("digital");
+
+const date =
+    document.getElementById("date");
+
+const toggleInfo =
+    document.getElementById("toggleInfo");
+
+
+/* =========================
+   LOAD SAVED VISIBILITY
+========================= */
+
+const savedState =
+    localStorage.getItem("clockInfoHidden");
+
+
+if(savedState === "true"){
+
+    clock.classList.add("hide-info");
+
+}
+
+
+/* =========================
+   TOGGLE DIGITAL + DATE
+========================= */
+
+toggleInfo.addEventListener(
+    "click",
+    function(){
+
+        clock.classList.toggle(
+            "hide-info"
+        );
+
+
+        const hidden =
+            clock.classList.contains(
+                "hide-info"
+            );
+
+
+        /* Save setting */
+
+        localStorage.setItem(
+            "clockInfoHidden",
+            hidden
+        );
+
+
+        /* Update button */
+
+        toggleInfo.textContent =
+            hidden ? "" : "";
+
+        toggleInfo.title =
+            hidden
+            ? "Show time and date"
+            : "Hide time and date";
+
+        toggleInfo.setAttribute(
+            "aria-label",
+            hidden
+            ? "Show digital time and date"
+            : "Hide digital time and date"
+        );
+
+    }
+);
+
+
+/* =========================
+   RESTORE BUTTON STATE
+========================= */
+
+if(clock.classList.contains("hide-info")){
+
+    toggleInfo.textContent = "👁‍🗨";
+
+    toggleInfo.title =
+        "Show time and date";
+
+    toggleInfo.setAttribute(
+        "aria-label",
+        "Show digital time and date"
+    );
+
+}
+
+
+/* =========================
+   UPDATE CLOCK
+========================= */
+
+function update(){
+
+    const now =
+        new Date();
+
+
+    /* =====================
+       TIME CALCULATION
+    ====================== */
+
+    const seconds =
+        now.getSeconds();
+
+
+    const minutes =
+        now.getMinutes() +
+        seconds / 60;
+
+
+    const hours =
+        (now.getHours() % 12) +
+        minutes / 60;
+
+
+    /* =====================
+       HOUR HAND
+    ====================== */
+
+    hour.style.transform =
+        `translateX(-50%) rotate(${hours * 30}deg)`;
+
+
+    /* =====================
+       MINUTE HAND
+    ====================== */
+
+    minute.style.transform =
+        `translateX(-50%) rotate(${minutes * 6}deg)`;
+
+
+    /* =====================
+       SECOND HAND
+    ====================== */
+
+    second.style.transform =
+        `translateX(-50%) rotate(${seconds * 6}deg)`;
+
+
+    /* =====================
+       DIGITAL TIME
+    ====================== */
+
+    digital.textContent =
+        now.toLocaleTimeString();
+
+
+    /* =====================
+       DATE
+    ====================== */
+
+    date.textContent =
+        now.toLocaleDateString(
+            undefined,
+            {
+                weekday:"short",
+                day:"numeric",
+                month:"short",
+                year:"numeric"
+            }
+        );
+
+
+    /* =====================
+       SYNCHRONIZE
+    ====================== */
+
+    setTimeout(
+        update,
+        1000 - now.getMilliseconds()
+    );
+
+}
+
+
+/* =========================
+   START CLOCK
+========================= */
+
+update();
+
+</script>
+
+</body>
+</html>

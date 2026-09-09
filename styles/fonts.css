@@ -1,0 +1,34 @@
+@font-face {
+  font-family: 'roboto_regular';
+  src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+  font-weight: 100;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'roboto_bold';
+  src: url('../fonts/Roboto-Bold.ttf') format('truetype');
+  font-weight: 1000;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrainsMono-Regular';
+  src: url('../fonts/JetBrainsMono-Regular.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'JetBrainsMono-ExtraBold';
+  src: url('../fonts/JetBrainsMono-ExtraBold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'faruma';
+  src: url('../fonts/Faruma.ttf') format('truetype');
+  font-weight: 1000;
+  font-style: normal;
+}

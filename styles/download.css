@@ -1,0 +1,50 @@
+
+#download_box {
+	padding-bottom: 0px;
+	max-width: 850px;
+	margin: auto;
+}
+
+#GUI_image_box {
+  margin-top: 100px;
+  overflow: hidden;
+  height: 280px; 
+  position: relative; 
+}
+
+#GUI_Image {
+  position: absolute;
+  top: 0; 
+  width: 100%; 
+  height: auto; 
+  object-fit: cover;
+  left: 50%; 
+   transform: translateX(-50%);
+}
+
+
+
+#API_image_box {
+  margin-top: 0px;
+  overflow: hidden;
+  height: 320px; 
+  position: relative; 
+}
+
+#API_Image {
+  position: absolute;
+  top: 0; 
+  width: auto; 
+  max-height: 500px; 
+  object-fit: cover;
+  left: 50%; 
+  transform: translateX(-20%);
+}
+
+@media screen and (max-width: 850px) {
+	#API_Image {
+	
+	  transform: translateX(-50%);
+	}
+
+}
