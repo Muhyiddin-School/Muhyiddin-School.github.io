@@ -130,6 +130,16 @@ t {
     display: block;
 }
 
+date {
+    color: #505050;
+    font-size: 14px;
+    line-height: 28px;
+    display: block;
+	text-align: right;
+	margin-top: 10px;
+	font-family: 'roboto_bold';
+}
+
 tg {
     color: #777777;
     font-size: 18px;
@@ -324,6 +334,11 @@ ft a:hover {
     flex: 0 0 24px;
 }
 
+hr {
+    border: none;
+    height: 1px;
+    background-color: #707070;
+}
 
 /* =========================================================
    FOOTER AUTHOR LINK
@@ -470,6 +485,15 @@ h5 {
     margin: 0px 0px 30px 0px;
 }
 
+
+h6 {
+    white-space: pre-line;
+	font-size: 25px;
+	font-family: 'roboto_bold';
+	text-align: left;
+	display: block;
+	margin: 0px 0px 20px 0px;
+}
 
 /* =========================================================
    WIDTH

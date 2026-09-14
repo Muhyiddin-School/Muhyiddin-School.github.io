@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
+
+<title>Exam Dashboard</title>
+
+
+<style>
+
+/* =========================
+   RESET
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+
+/* =========================
+   HTML + BODY
+========================= */
+
+html,
+body{
+
+    width:100%;
+    height:100%;
+
+}
+
+
+/* =========================
+   BODY
+========================= */
+
+body{
+
+    min-height:100vh;
+
+    background:#000;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+    display:flex;
+
+    justify-content:center;
+    align-items:center;
+
+    overflow:hidden;
+
+}
+
+
+/* =========================
+   DASHBOARD
+========================= */
+
+.dashboard{
+
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+   
+
+}
+
+
+/* =========================
+   LOGO
+========================= */
+
+.logo{
+
+    position:fixed;
+
+    top:20px;
+    left:20px;
+
+    z-index:9999;
+
+    width:
+        clamp(
+            120px,
+            12vw,
+            220px
+        );
+
+}
+
+
+.logo img{
+
+    width:100%;
+
+    display:block;
+
+}
+
+
+/* =========================
+   TABLE CONTAINER
+========================= */
+
+.table-wrap{
+
+    width:100%;
+    max-width:1800px;
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap: 5px;
+
+    align-items:stretch;
+
+}
+
+
+/* =========================
+   INFORMATION TABLE
+========================= */
+
+.info{
+
+    width:100%;
+
+    height:100%;
+
+    background:#fff;
+
+    border-radius:20px;
+
+    padding:
+        clamp(
+            25px,
+            3vw,
+            55px
+        );
+
+    border:5px solid #000;
+
+    font-size:
+        clamp(
+            24px,
+            2.4vw,
+            48px
+        );
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+/* =========================
+   TABLE ROW
+========================= */
+
+.row{
+
+    flex:1;
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+    gap:20px;
+
+    padding:
+        15px
+        10px;
+
+    border-bottom:
+        2px solid #ddd;
+
+    font-weight:bold;
+
+    color:#000;
+	
+	font-size: 40px;
+
+}
+
+
+.row:last-child{
+
+    border-bottom:none;
+
+}
+
+
+/* =========================
+   TABLE HEADINGS
+========================= */
+
+.row_heading{
+
+    font-size:inherit;
+
+    white-space:nowrap;
+
+    text-align:left;
+
+    flex-shrink:0;
+	
+	font-size: 32px;
+
+}
+
+
+/* =========================
+   EDITABLE VALUES
+========================= */
+
+.row span[contenteditable="true"]:not(.row_heading){
+
+    background:#fff;
+
+    padding:
+        8px
+        12px;
+
+    border-radius:8px;
+
+    min-width:100px;
+
+    margin-left:auto;
+
+    text-align:right;
+
+    outline:none;
+
+    font-size:inherit;
+
+    white-space:nowrap;
+
+}
+
+
+.row span[contenteditable="true"]:hover{
+
+    background:#dddddd;
+	border-radius: 10px;
+
+   
+
+}
+
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:900px){
+
+    body{
+
+        overflow:auto;
+
+        align-items:flex-start;
+
+    }
+
+
+    .dashboard{
+
+        width:100%;
+
+        height:auto;
+
+        min-height:100vh;
+
+        padding:15px;
+
+    }
+
+
+    .table-wrap{
+
+        grid-template-columns:1fr;
+
+        gap:20px;
+
+    }
+
+
+    .info{
+
+        height:auto;
+
+        padding:20px;
+
+        border-width:3px;
+
+        border-radius:15px;
+
+        font-size:24px;
+
+    }
+
+
+    .row{
+
+        flex:none;
+
+        gap:15px;
+
+        padding:
+            18px
+            5px;
+
+    }
+
+
+    .row_heading{
+
+        text-align:left;
+
+        white-space:normal;
+
+    }
+
+
+    .row span[contenteditable="true"]:not(.row_heading){
+
+        min-width:120px;
+
+        padding:6px 8px;
+
+        margin-left:auto;
+
+        text-align:right;
+
+        white-space:normal;
+
+    }
+
+
+    .logo{
+
+        width:100px;
+
+        top:10px;
+        left:10px;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+
+<body>
+
+
+<!-- =========================
+     DASHBOARD
+========================= -->
+
+<div class="dashboard">
+
+
+    <!-- =====================
+         LOGO
+    ====================== -->
+
+    <a
+        href="../index.html"
+        class="logo"
+    >
+
+        <img
+            src="../imgs/banner_logo_round_border.png"
+            alt="Banner Logo"
+        >
+
+    </a>
+
+
+    <!-- =====================
+         TWO TABLES
+    ====================== -->
+
+    <div class="table-wrap">
+
+
+        <!-- =====================
+             LEFT TABLE
+        ====================== -->
+
+        <div class="info">
+
+
+            <!-- CENTER NAME -->
+
+            <div class="row">
+
+                <span
+                    class="row_heading"
+                    contenteditable="true"
+                >
+                    Center Name:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                >
+                    Muhyiddin School
+                </span>
+
+            </div>
+
+
+            <!-- SYLLABUS TITLE -->
+
+            <div class="row">
+
+                <span
+                    class="row_heading"
+                    contenteditable="true"
+                >
+                    Syllabus Title:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                >
+				TITLE
+				</span>
+
+            </div>
+
+
+            <!-- DURATION -->
+
+            <div class="row">
+
+                <span
+                    class="row_heading"
+                    contenteditable="true"
+                >
+                    Duration:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                >
+                    00 Hours 00 Minutes
+                </span>
+
+            </div>
+
+
+            <!-- STARTING TIME -->
+
+            <div class="row">
+
+                <span
+                    class="row_heading"
+                    contenteditable="true"
+                >
+                    Starting Time:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                >
+                    00:00 AM
+                </span>
+
+            </div>
+
+
+            <!-- FINISHING TIME -->
+
+            <div class="row">
+
+                <span
+                    class="row_heading"
+                    contenteditable="true"
+                >
+                    Finishing Time:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                >
+                    00:00 AM
+                </span>
+
+            </div>
+
+
+        </div>
+
+
+        <!-- =====================
+             RIGHT TABLE
+        ====================== -->
+
+        <div class="info">
+
+
+            <!-- CENTER NUMBER -->
+
+            <div class="row">
+
+                <span
+                    class="row_heading"
+                    contenteditable="true"
+                >
+                    Center Number:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                >
+                    MV102
+                </span>
+
+            </div>
+
+
+            <!-- SYLLABUS CODE -->
+
+            <div class="row">
+
+                <span
+                    class="row_heading"
+                    contenteditable="true"
+                >
+                    Syllabus Code:
+                </span>
+						
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                >TST1234</span>
+
+            </div>
+
+
+            <!-- DATE -->
+
+            <div class="row">
+
+                <span
+                    class="row_heading"
+                    contenteditable="true"
+                >
+                    Date:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                >
+                    17 / 06 / 2026
+                </span>
+
+            </div>
+
+
+            <!-- DAY -->
+
+            <div class="row">
+
+                <span
+                    class="row_heading"
+                    contenteditable="true"
+                >
+                    Day:
+                </span>
+
+                <span
+                    spellcheck="false"
+                    contenteditable="true"
+                >
+                    Wednesday
+                </span>
+
+            </div>
+
+
+            <!-- EMPTY SPACE TO MATCH LEFT TABLE -->
+
+            <div class="row">
+
+                <span></span>
+
+                <span></span>
+
+            </div>
+
+
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+
+</html>
