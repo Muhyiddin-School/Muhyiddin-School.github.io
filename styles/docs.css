@@ -89,9 +89,14 @@ doc_path_text {
 	background: #ffffff;
 	color: #000000;
 	
-	box-shadow: 1px 16px 29px -4px rgba(0,0,0,0.75);
-	-webkit-box-shadow: 1px 16px 29px -4px rgba(0,0,0,0.75);
-	-moz-box-shadow: 1px 16px 29px -4px rgba(0,0,0,0.75);
+	box-shadow:
+        1px 16px 29px -4px rgba(0,0,0,0.15);
+
+    -webkit-box-shadow:
+        1px 16px 29px -4px rgba(0,0,0,0.15);
+
+    -moz-box-shadow:
+        1px 16px 29px -4px rgba(0,0,0,0.15);
 }
 
 #doc_page ::-moz-selection {

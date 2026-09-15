@@ -32,3 +32,11 @@
   font-weight: 1000;
   font-style: normal;
 }
+
+
+@font-face {
+    font-family: 'faruma_bold';
+    src: url('../fonts/Faruma.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+}

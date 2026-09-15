@@ -548,7 +548,17 @@ NEWS HORIZONTAL SCROLL
     display: none;
 }
 
+.home_info_dhiv {
+    font-size: 20px;
+    line-height: 36px;
+    font-family: "faruma_bold";
+    font-weight: bold;
 
+}
+
+.home_info_eng {
+
+}
 
 /*Core Values*/
 
