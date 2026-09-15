@@ -138,7 +138,7 @@ doc_date {
 
 doc_h1 {
 	white-space: pre-line;
-	font-size: 50px;
+	font-size: 40px;
 	font-family: 'roboto_bold';
 	text-align: center;
 	display: block;
@@ -147,7 +147,7 @@ doc_h1 {
 
 doc_h2 {
 	white-space: pre-line;
-	font-size: 35px;
+	font-size: 25px;
 	font-family: 'roboto_bold';
 	text-align: left;
 	display: block;
@@ -156,7 +156,7 @@ doc_h2 {
 
 doc_h3 {
 	white-space: pre-line;
-	font-size: 25px;
+	font-size: 20px;
 	font-family: 'roboto_bold';
 	text-align: left;
 	display: block;

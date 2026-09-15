@@ -547,7 +547,7 @@ h6 {
 #nav_logo {
     margin-left: 70px;
     float: left;
-    height: 72px;
+    height: 70px;
 }
 
 
@@ -1289,7 +1289,7 @@ h6 {
    MOBILE
    ========================================================= */
 
-@media screen and (max-width: 1300px) {
+@media screen and (max-width: 1400px) {
 
     #nav_bar {
         width: 100%;
@@ -1312,6 +1312,7 @@ h6 {
 
     #nav_logo {
         margin-left: 20px;
+		height: 60px;
     }
 
     #nav_dropdown_button {
