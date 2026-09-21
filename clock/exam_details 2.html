@@ -92,7 +92,9 @@ body{
     position:fixed;
 
     top:20px;
-    left:20px;
+    left:50%;
+
+    transform:translateX(-50%);
 
     z-index:9999;
 
@@ -182,14 +184,16 @@ body{
 
     display:flex;
 
-    justify-content:space-between;
+    flex-direction:column;
 
-    align-items:center;
+    justify-content:center;
 
-    gap:20px;
+    align-items:stretch;
+
+    gap:8px;
 
     padding:
-        15px
+        12px
         10px;
 
     border-bottom:
@@ -198,10 +202,12 @@ body{
     font-weight:bold;
 
     color:#000;
-	
-	font-size: 40px;
+
+    font-size:40px;
 
 }
+
+
 
 
 .row:last-child{
@@ -210,25 +216,31 @@ body{
 
 }
 
-
 /* =========================
-   TABLE HEADINGS
+   TABLE HEADINGS AND DATA
 ========================= */
 
 .row_heading{
 
-    font-size:inherit;
+    font-size:32px;
 
     white-space:nowrap;
 
     text-align:left;
 
     flex-shrink:0;
-	
-	font-size: 32px;
+
+    display:block;
 
 }
 
+
+.data {
+	text-align: right !important;
+	font-size: 45px !important;
+	 transform: scaleX(1.1);
+	
+}
 
 /* =========================
    EDITABLE VALUES
@@ -236,35 +248,51 @@ body{
 
 .row span[contenteditable="true"]:not(.row_heading){
 
+    display:block;
+
+    width:100%;
+
     background:#fff;
 
     padding:
-        8px
-        12px;
+        12px
+        15px;
 
     border-radius:8px;
 
-    min-width:100px;
+    min-width:0;
 
-    margin-left:auto;
+    margin-left:0;
 
-    text-align:right;
+    text-align:left;
 
     outline:none;
 
-    font-size:inherit;
+    font-size:40px;
 
     white-space:nowrap;
+
+    border:2px solid #ddd;
 
 }
 
 
 .row span[contenteditable="true"]:hover{
 
-    background:#dddddd;
-	border-radius: 10px;
+    background:#f5f5f5;
 
-   
+    border-radius:10px;
+
+}
+
+
+.row span[contenteditable="true"]:focus{
+
+    background:#fff;
+
+    border-color:#999;
+
+    border-radius:10px;
 
 }
 
@@ -427,6 +455,7 @@ body{
                 </span>
 
                 <span
+					class="data"
                     spellcheck="false"
                     contenteditable="true"
                 >
@@ -448,6 +477,7 @@ body{
                 </span>
 
                 <span
+				class="data"
                     spellcheck="false"
                     contenteditable="true"
                 >
@@ -469,6 +499,7 @@ body{
                 </span>
 
                 <span
+					class="data"
                     spellcheck="false"
                     contenteditable="true"
                 >
@@ -490,10 +521,11 @@ body{
                 </span>
 
                 <span
+					class="data"
                     spellcheck="false"
                     contenteditable="true"
                 >
-                    09:30 AM
+                    00:00 AM
                 </span>
 
             </div>
@@ -511,6 +543,7 @@ body{
                 </span>
 
                 <span
+					class="data"
                     spellcheck="false"
                     contenteditable="true"
                 >
@@ -542,6 +575,7 @@ body{
                 </span>
 
                 <span
+					class="data"
                     spellcheck="false"
                     contenteditable="true"
                 >
@@ -563,6 +597,7 @@ body{
                 </span>
 						
                 <span
+					class="data"
                     spellcheck="false"
                     contenteditable="true"
                 >TST1234</span>
@@ -582,6 +617,7 @@ body{
                 </span>
 
                 <span
+					class="data"
 					id="exam_date"
                     spellcheck="false"
                     contenteditable="true"
@@ -604,6 +640,7 @@ body{
                 </span>
 
                 <span
+					class="data"
 					id="exam_day"
                     spellcheck="false"
                     contenteditable="true"
@@ -616,7 +653,7 @@ body{
 
             <!-- EMPTY SPACE TO MATCH LEFT TABLE -->
 
-            <div class="row">
+           <div class="row">
 
                 <span
                     class="row_heading"
@@ -626,11 +663,11 @@ body{
                 </span>
 
                 <span
-				
+					class="data"
                     spellcheck="false"
                     contenteditable="true"
                 >
-                    Oct/Nov 2026
+                    October/November 2026
                 </span>
 
             </div>
@@ -668,7 +705,6 @@ function updateDateAndDay() {
 updateDateAndDay();
 
 </script>
-
 
 </body>
 
