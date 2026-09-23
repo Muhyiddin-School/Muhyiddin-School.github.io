@@ -119,10 +119,32 @@ for /d %%D in ("%GALLERY%\*") do (
 
     rem --------------------------------------------------------
     rem Create image list
-    rem cover.* is excluded
+    rem
+    rem cover.* IS INCLUDED and placed FIRST
     rem --------------------------------------------------------
 
     >"%%D\images.tmp" (
+
+        rem ----------------------------------------------------
+        rem Add cover image first
+        rem ----------------------------------------------------
+
+        for %%F in (
+            "%%D\cover.jpg"
+            "%%D\cover.jpeg"
+            "%%D\cover.png"
+            "%%D\cover.gif"
+            "%%D\cover.webp"
+        ) do (
+            if exist "%%~F" (
+                echo ^<img class="image" src="%%~nxF"^>
+            )
+        )
+
+        rem ----------------------------------------------------
+        rem Add remaining images
+        rem ----------------------------------------------------
+
         for %%F in (
             "%%D\*.jpg"
             "%%D\*.jpeg"
@@ -251,3 +273,19 @@ echo ========================================
 echo.
 
 pause
+
+The important change is this section:
+
+rem Add cover image first
+
+for %%F in (
+    "%%D\cover.jpg"
+    "%%D\cover.jpeg"
+    "%%D\cover.png"
+    "%%D\cover.gif"
+    "%%D\cover.webp"
+) do (
+    if exist "%%~F" (
+        echo ^<img class="image" src="%%~nxF"^>
+    )
+)
