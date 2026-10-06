@@ -1,4 +1,7 @@
 User-agent: *
 Allow: /
 
+Disallow: /_UPDATE_GALLERY_SCRIPT.bat
+Disallow: /.git
+
 Sitemap: https://muhyiddin-school.github.io/sitemap.xml
