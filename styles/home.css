@@ -306,13 +306,13 @@
 
 
 /* ========================================= 
-NEWS HORIZONTAL SCROLL 
+Policies HORIZONTAL SCROLL 
 ========================================= */ 
 
-#home_news_box {
+#home_Policies_box {
 	margin-top: 30px;
 }
-.news_scroll_wrapper { 
+.Policies_scroll_wrapper { 
  position: relative;
  display: flex;
  align-items: center;
@@ -320,7 +320,7 @@ NEWS HORIZONTAL SCROLL
  margin-top: 0px;
  } 
 
-.news_scroll { 
+.Policies_scroll { 
  display: flex;
  gap: 20px; width: 100%;
  overflow-x: auto;
@@ -329,12 +329,12 @@ NEWS HORIZONTAL SCROLL
  padding: 10px 5px;
  } 
 
-.news_scroll::-webkit-scrollbar { 
+.Policies_scroll::-webkit-scrollbar { 
  display: none;
  } 
  
-/* News cards */ 
-.news_card { 
+/* Policies cards */ 
+.Policies_card { 
 	flex: 0 0 300px;
     width: 300px;
  
@@ -355,14 +355,14 @@ NEWS HORIZONTAL SCROLL
 
 } 
  
-.news_card:hover { 
+.Policies_card:hover { 
 	
 	background-color: #fafafa;
 
 } 
 
 /* Scroll buttons */ 
-.news_scroll_button { 
+.Policies_scroll_button { 
  position: absolute;
  z-index: 5; 
  width: 40px;
@@ -379,36 +379,36 @@ NEWS HORIZONTAL SCROLL
  justify-content: center;
  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease; } 
 
-.news_scroll_button:hover { 
+.Policies_scroll_button:hover { 
  background-color: #202020; 
  color: white; 
  } 
 
-.news_left { 
+.Policies_left { 
  left: -32px; 
 } 
 
-.news_right { 
+.Policies_right { 
  right: -32px; 
 } 
 
 /* Mobile */
 @media (max-width: 700px) { 
-	.news_card { 
+	.Policies_card { 
 	 flex: 0 0 85%; 
 	} 
 
-	.news_scroll_button { 
+	.Policies_scroll_button { 
 	 width: 35px; 
 	 height: 35px; 
 	 font-size: 18px; 
 	} 
 
-	.news_left { 
+	.Policies_left { 
 	 left: -32px; 
 	} 
 
-	.news_right { 
+	.Policies_right { 
 	right: -32px; 
 	} 
 
@@ -416,10 +416,10 @@ NEWS HORIZONTAL SCROLL
 
 
 /* =========================================
-   NEWS POPUP
+   Policies POPUP
 ========================================= */
 
-.news_popup {
+.Policies_popup {
     position: fixed;
     inset: 0;
     z-index: 9999;
@@ -439,14 +439,14 @@ NEWS HORIZONTAL SCROLL
     transition: opacity 0.2s ease, visibility 0s linear 0.2s;
 }
 
-.news_popup.show {
+.Policies_popup.show {
     opacity: 1;
     visibility: visible;
 
     transition: opacity 0.2s ease, visibility 0s linear 0s;
 }
 
-.news_popup_box {
+.Policies_popup_box {
     position: relative;
 
     width: 100%;
@@ -469,14 +469,14 @@ NEWS HORIZONTAL SCROLL
         transform 0.2s ease;
 }
 
-.news_popup.show .news_popup_box {
+.Policies_popup.show .Policies_popup_box {
     opacity: 1;
     transform: scale(1);
 }
 
 /* Close button */
 
-.news_popup_close {
+.Policies_popup_close {
     position: absolute;
     top: 12px;
     right: 15px;
@@ -503,7 +503,7 @@ NEWS HORIZONTAL SCROLL
     transition: 0.2s ease;
 }
 
-.news_popup_close:hover {
+.Policies_popup_close:hover {
     background: #202020;
     color: #ffffff;
 }
@@ -511,7 +511,7 @@ NEWS HORIZONTAL SCROLL
 
 /* Popup heading */
 
-.news_popup_box h2 {
+.Policies_popup_box h2 {
     margin: 0 50px 20px 0;
 	font-size: 30px;
 }
@@ -519,7 +519,7 @@ NEWS HORIZONTAL SCROLL
 
 /* Popup image */
 
-.news_popup_box img {
+.Policies_popup_box img {
     display: block;
 
     width: 100%;
@@ -535,16 +535,16 @@ NEWS HORIZONTAL SCROLL
 
 /* Popup details */
 
-#news_popup_details {
+#Policies_popup_details {
 	 white-space: pre-line;
     font-size: 15px;
     line-height: 1.7;
 }
 
 
-/* Hidden data inside each news item */
+/* Hidden data inside each Policies item */
 
-.news_popup_data {
+.Policies_popup_data {
     display: none;
 }
 
@@ -591,16 +591,16 @@ NEWS HORIZONTAL SCROLL
 
 @media (max-width: 700px) {
 
-    .news_popup {
+    .Policies_popup {
         padding: 12px;
     }
 
-    .news_popup_box {
+    .Policies_popup_box {
         padding: 30px 20px;
         border-radius: 15px;
     }
 
-    .news_popup_box img {
+    .Policies_popup_box img {
         max-height: 300px;
     }
 

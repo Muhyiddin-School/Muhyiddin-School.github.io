@@ -34,7 +34,7 @@
 					<a href="forms.html"><p class="nav_buttons"> Forms </p></a>					
 					<a href="documents.html"><p class="nav_buttons"> Documents </p></a>
 					<a href="gallery.html"><p class="nav_buttons"> Gallery </p></a>
-					<a href="news.html"><p class="nav_buttons"> News </p></a>
+					<a href="Policies.html"><p class="nav_buttons"> Policies </p></a>
 					<a href="https://www.facebook.com/muhyiddinschool"><p class="nav_buttons">Facebook</p></a>	
 					<a href="https://staff.muhyiddin.edu.mv/"><p class="nav_buttons"> Staff Portal </p></a>
 					<a href="contacts.html"><p class="nav_buttons"> Contact Us </p></a>
@@ -54,7 +54,7 @@
 				<a href="forms.html">Forms</a>
 				<a href="documents.html">Documents</a>
 				<a href="gallery.html">Gallery</a>
-				<a href="news.html">News</a>
+				<a href="Policies.html">Policies</a>
 				<a href="https://www.facebook.com/muhyiddinschool">Facebook</a>
 				<a href="https://staff.muhyiddin.edu.mv/">Staff Portal</a>
 				<a href="contacts.html">Contact Us</a>
@@ -161,21 +161,21 @@
 					
 					--!>
 					
-					<div class="restricted_width_box" id="home_news_box">
+					<div class="restricted_width_box" id="home_Policies_box">
 
 						<div class="light_card">
 
 							<h4>Latest Updates</h4>
 
-							<div class="news_scroll_wrapper">
+							<div class="Policies_scroll_wrapper">
 
 								<!-- Left Button -->
-								<button class="news_scroll_button news_left" onclick="scrollNews(-1)">
+								<button class="Policies_scroll_button Policies_left" onclick="scrollPolicies(-1)">
 									&#10094;
 								</button>
 
 
-								<div class="news_scroll" id="news_scroll">
+								<div class="Policies_scroll" id="Policies_scroll">
 								
 								<!--- 
 								=========
@@ -184,15 +184,15 @@
 								
 								1. TO SHOW UP THE DETAILED POPUP ON CLICK
 								
-									<a href="#" class="news_item" onclick="openNews(this); return false;">
-										<div class="news_card">
+									<a href="#" class="Policies_item" onclick="openPolicies(this); return false;">
+										<div class="Policies_card">
 											<tag>ACADEMIC</tag>
 											<t>(Test) Olevel Exams Started</t>
 											<date>9/9/2026</date>
 										</div>
 
 										
-										<div class="news_popup_data">
+										<div class="Policies_popup_data">
 
 											<h2>Olevel Exams Started</h2>
 
@@ -213,8 +213,8 @@
 									
 								2. TO REDIRECT TO ANOTHER PAGE OR SITE ON CLICK
 									
-									<a href="about.html" class="news_item">
-										<div class="news_card">
+									<a href="about.html" class="Policies_item">
+										<div class="Policies_card">
 											<tag>INFO</tag>
 											<t>About Us Updated</t>
 											<date>9/9/2026</date>
@@ -225,8 +225,8 @@
 								-->
 								
 								
-									<a href="news/imgs/Olevel_Time_Table_2026.png" class="news_item">
-										<div class="news_card">
+									<a href="Policies/imgs/Olevel_Time_Table_2026.png" class="Policies_item">
+										<div class="Policies_card">
 											<tag>TIMETABLES</tag>
 											<t>O'Level Exam Time Table 2026</t>
 											<date>17/9/2026</date>
@@ -235,8 +235,8 @@
 									
 
 
-								<a href="documents.html" class="news_item">
-										<div class="news_card">
+								<a href="documents.html" class="Policies_item">
+										<div class="Policies_card">
 											<tag>DOCUMENTS</tag>
 											<t>School Uniform Details 2027 Uploaded</t>
 											<date>23/9/2026</date>
@@ -244,8 +244,8 @@
 									</a>
 									
 									
-									<a href="documents.html" class="news_item">
-										<div class="news_card">
+									<a href="documents.html" class="Policies_item">
+										<div class="Policies_card">
 											<tag>DOCUMENTS</tag>
 											<t>Nursery Stationery List Uploaded</t>
 											<date>23/9/2026</date>
@@ -257,7 +257,7 @@
 
 
 								<!-- Right Button -->
-								<button class="news_scroll_button news_right" onclick="scrollNews(1)">
+								<button class="Policies_scroll_button Policies_right" onclick="scrollPolicies(1)">
 									&#10095;
 								</button>
 
@@ -269,22 +269,22 @@
 
 
 					<!-- =========================================
-						 NEWS POPUP
+						 Policies POPUP
 					========================================= -->
 
-					<div class="news_popup" id="news_popup">
+					<div class="Policies_popup" id="Policies_popup">
 
-						<div class="news_popup_box">
+						<div class="Policies_popup_box">
 
-							<button class="news_popup_close" onclick="closeNews()">
+							<button class="Policies_popup_close" onclick="closePolicies()">
 								&times;
 							</button>
 
-							<h2 id="news_popup_title"></h2>
+							<h2 id="Policies_popup_title"></h2>
 
-							<img id="news_popup_image" src="" alt="">
+							<img id="Policies_popup_image" src="" alt="">
 
-							<div id="news_popup_details"></div>
+							<div id="Policies_popup_details"></div>
 
 						</div>
 
@@ -557,7 +557,7 @@
 						<ft><a href="forms.html">Forms</a></ft>
 						<ft><a href="documents.html">Documents</a></ft>
 						<ft><a href="gallery.html">Gallery</a></ft>
-						<ft><a href="news.html">News</a></ft>
+						<ft><a href="Policies.html">Policies</a></ft>
 						<ft><a href="https://www.facebook.com/muhyiddinschool">Facebook</a></ft>
 						<ft><a href="https://staff.muhyiddin.edu.mv/">Staff Portal</a></ft>
 						<ft><a href="contacts.html">Contact Us</a></ft>
@@ -583,44 +583,44 @@
 					document.getElementById('copyrights').textContent = "Copyrights (©) "+currentYear + " Muhyiddin School. All Rights Reserved.";
 					
 					
-					// news scroll
-					function scrollNews(direction) { 
-					const newsScroll = document.getElementById("news_scroll"); 
+					// Policies scroll
+					function scrollPolicies(direction) { 
+					const PoliciesScroll = document.getElementById("Policies_scroll"); 
 					const scrollAmount = 380; 
-					newsScroll.scrollBy({ left: direction * scrollAmount, behavior: "smooth" }); 
+					PoliciesScroll.scrollBy({ left: direction * scrollAmount, behavior: "smooth" }); 
 					}
 					
 					
-					// news popup
-					function openNews(newsItem) {
+					// Policies popup
+					function openPolicies(PoliciesItem) {
 
-						const data = newsItem.querySelector(".news_popup_data");
+						const data = PoliciesItem.querySelector(".Policies_popup_data");
 
 						const title = data.querySelector("h2");
 						const image = data.querySelector("img");
 						const details = data.querySelector("details");
 
-						document.getElementById("news_popup_title").textContent =
+						document.getElementById("Policies_popup_title").textContent =
 							title.textContent;
 
-						document.getElementById("news_popup_image").src =
+						document.getElementById("Policies_popup_image").src =
 							image.src;
 
-						document.getElementById("news_popup_image").alt =
+						document.getElementById("Policies_popup_image").alt =
 							image.alt;
 
-						document.getElementById("news_popup_details").innerHTML =
+						document.getElementById("Policies_popup_details").innerHTML =
 							details.innerHTML;
 
-						document.getElementById("news_popup").classList.add("show");
+						document.getElementById("Policies_popup").classList.add("show");
 
 						document.body.style.overflow = "hidden";
 					}
 
 
-					function closeNews() {
+					function closePolicies() {
 
-						document.getElementById("news_popup").classList.remove("show");
+						document.getElementById("Policies_popup").classList.remove("show");
 
 						document.body.style.overflow = "";
 					}
@@ -628,10 +628,10 @@
 
 					/* Close when clicking outside the popup box */
 
-					document.getElementById("news_popup").addEventListener("click", function(event) {
+					document.getElementById("Policies_popup").addEventListener("click", function(event) {
 
 						if (event.target === this) {
-							closeNews();
+							closePolicies();
 						}
 
 					});
@@ -642,7 +642,7 @@
 					document.addEventListener("keydown", function(event) {
 
 						if (event.key === "Escape") {
-							closeNews();
+							closePolicies();
 						}
 
 					});
