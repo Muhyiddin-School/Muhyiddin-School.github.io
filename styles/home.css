@@ -247,12 +247,25 @@
 
 #home_values .light_card_no_padding h3 {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
     color: #ffffff;
-	text-shadow: 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 30px #000000;
+	text-shadow: 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 30px #000000;
+    text-align: center;
+    width: 90%;
+    z-index: 2;
+}
+
+#home_values .light_card_no_padding h3_d {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    color: #ffffff;
+	text-shadow: 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 30px #000000;
     text-align: center;
     width: 90%;
     z-index: 2;
@@ -309,10 +322,10 @@
 Policies HORIZONTAL SCROLL 
 ========================================= */ 
 
-#home_Policies_box {
+#home_news_box {
 	margin-top: 30px;
 }
-.Policies_scroll_wrapper { 
+.news_scroll_wrapper { 
  position: relative;
  display: flex;
  align-items: center;
@@ -320,7 +333,7 @@ Policies HORIZONTAL SCROLL
  margin-top: 0px;
  } 
 
-.Policies_scroll { 
+.news_scroll { 
  display: flex;
  gap: 20px; width: 100%;
  overflow-x: auto;
@@ -329,12 +342,12 @@ Policies HORIZONTAL SCROLL
  padding: 10px 5px;
  } 
 
-.Policies_scroll::-webkit-scrollbar { 
+.news_scroll::-webkit-scrollbar { 
  display: none;
  } 
  
 /* Policies cards */ 
-.Policies_card { 
+.news_card { 
 	flex: 0 0 300px;
     width: 300px;
  
@@ -355,14 +368,14 @@ Policies HORIZONTAL SCROLL
 
 } 
  
-.Policies_card:hover { 
+.news_card:hover { 
 	
 	background-color: #fafafa;
 
 } 
 
 /* Scroll buttons */ 
-.Policies_scroll_button { 
+.news_scroll_button { 
  position: absolute;
  z-index: 5; 
  width: 40px;
@@ -379,36 +392,36 @@ Policies HORIZONTAL SCROLL
  justify-content: center;
  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease; } 
 
-.Policies_scroll_button:hover { 
+.news_scroll_button:hover { 
  background-color: #202020; 
  color: white; 
  } 
 
-.Policies_left { 
+.news_left { 
  left: -32px; 
 } 
 
-.Policies_right { 
+.news_right { 
  right: -32px; 
 } 
 
 /* Mobile */
 @media (max-width: 700px) { 
-	.Policies_card { 
+	.news_card { 
 	 flex: 0 0 85%; 
 	} 
 
-	.Policies_scroll_button { 
+	.news_scroll_button { 
 	 width: 35px; 
 	 height: 35px; 
 	 font-size: 18px; 
 	} 
 
-	.Policies_left { 
+	.news_left { 
 	 left: -32px; 
 	} 
 
-	.Policies_right { 
+	.news_right { 
 	right: -32px; 
 	} 
 
@@ -419,7 +432,7 @@ Policies HORIZONTAL SCROLL
    Policies POPUP
 ========================================= */
 
-.Policies_popup {
+.news_popup {
     position: fixed;
     inset: 0;
     z-index: 9999;
@@ -439,14 +452,14 @@ Policies HORIZONTAL SCROLL
     transition: opacity 0.2s ease, visibility 0s linear 0.2s;
 }
 
-.Policies_popup.show {
+.news_popup.show {
     opacity: 1;
     visibility: visible;
 
     transition: opacity 0.2s ease, visibility 0s linear 0s;
 }
 
-.Policies_popup_box {
+.news_popup_box {
     position: relative;
 
     width: 100%;
@@ -469,14 +482,14 @@ Policies HORIZONTAL SCROLL
         transform 0.2s ease;
 }
 
-.Policies_popup.show .Policies_popup_box {
+.news_popup.show .news_popup_box {
     opacity: 1;
     transform: scale(1);
 }
 
 /* Close button */
 
-.Policies_popup_close {
+.news_popup_close {
     position: absolute;
     top: 12px;
     right: 15px;
@@ -503,7 +516,7 @@ Policies HORIZONTAL SCROLL
     transition: 0.2s ease;
 }
 
-.Policies_popup_close:hover {
+.news_popup_close:hover {
     background: #202020;
     color: #ffffff;
 }
@@ -511,7 +524,7 @@ Policies HORIZONTAL SCROLL
 
 /* Popup heading */
 
-.Policies_popup_box h2 {
+.news_popup_box h2 {
     margin: 0 50px 20px 0;
 	font-size: 30px;
 }
@@ -519,7 +532,7 @@ Policies HORIZONTAL SCROLL
 
 /* Popup image */
 
-.Policies_popup_box img {
+.news_popup_box img {
     display: block;
 
     width: 100%;
@@ -535,7 +548,7 @@ Policies HORIZONTAL SCROLL
 
 /* Popup details */
 
-#Policies_popup_details {
+#news_popup_details {
 	 white-space: pre-line;
     font-size: 15px;
     line-height: 1.7;
@@ -544,7 +557,7 @@ Policies HORIZONTAL SCROLL
 
 /* Hidden data inside each Policies item */
 
-.Policies_popup_data {
+.news_popup_data {
     display: none;
 }
 
@@ -571,7 +584,8 @@ Policies HORIZONTAL SCROLL
     transition: transform 0.4s ease;
 }
 
-#core_values_box .light_card_no_padding h3 {
+#core_values_box .light_card_no_padding h3,
+#core_values_box .light_card_no_padding h3_d {
     transition: font-size 0.25s ease;
 }
 
@@ -583,7 +597,8 @@ Policies HORIZONTAL SCROLL
     transform: scale(1.06);
 }
 
-#core_values_box .light_card_no_padding:hover h3 {
+#core_values_box .light_card_no_padding:hover h3,
+#core_values_box .light_card_no_padding:hover h3_d {
 	font-size: 40px;
 }
 
@@ -591,16 +606,16 @@ Policies HORIZONTAL SCROLL
 
 @media (max-width: 700px) {
 
-    .Policies_popup {
+    .news_popup {
         padding: 12px;
     }
 
-    .Policies_popup_box {
+    .news_popup_box {
         padding: 30px 20px;
         border-radius: 15px;
     }
 
-    .Policies_popup_box img {
+    .news_popup_box img {
         max-height: 300px;
     }
 

@@ -39,4 +39,21 @@
     src: url('../fonts/Faruma.ttf') format('truetype');
     font-weight: bold;
     font-style: normal;
+	
+}
+
+
+@font-face {
+    font-family: 'faseyha_bold';
+    src: url('../fonts/Faseyha_bld_hinted_v2.ttf') format('truetype');
+    font-weight: bold;
+    font-style: normal;
+	
+}
+
+@font-face {
+    font-family: 'waheed_bold';
+    src: url('../fonts/MV_Waheed.otf') format('opentype');
+    font-weight: bold;
+    font-style: normal;
 }

@@ -450,6 +450,16 @@ h2 {
     display: block;
 }
 
+h2_d {
+    white-space: pre-line;
+    font-size: 55px;
+    color: #181818;
+    font-family: 'waheed_bold';
+    text-align: right;
+    margin: 0px 0px 30px 0px;
+    display: block;
+}
+
 h3 {
     white-space: pre-line;
     font-size: 45px;
@@ -466,6 +476,16 @@ h3 {
     margin: 30px 10px;
 }
 
+h3_d {
+    white-space: pre-line;
+    font-size: 45px;
+    color: #181818;
+    font-family: 'waheed_bold';
+    text-align: right;
+    margin: 30px 10px;
+    display: block;
+}
+
 h4 {
     white-space: pre-line;
 	font-size: 35px;
@@ -473,6 +493,16 @@ h4 {
 	text-align: left;
 	display: block;
 	margin: 0px 0px 20px 0px;
+}
+
+h4_d {
+    white-space: pre-line;
+    font-size: 35px;
+    color: #181818;
+    font-family: 'waheed_bold';
+    text-align: right;
+    margin: 0px 0px 30px 0px;
+    display: block;
 }
 
 h4_dhiv {
@@ -1090,6 +1120,15 @@ h6 {
 .grid2_box_masonry > * {
     break-inside: avoid;
     margin-bottom: 20px;
+}
+
+.eng_dhiv_heading_box {
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+
 }
 
 
