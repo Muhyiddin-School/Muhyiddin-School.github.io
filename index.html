@@ -665,6 +665,33 @@
 						}
 
 					});
+					
+					
+					
+					
+					/*Hover effect*/
+
+					const homeBackground = document.getElementById("home_background");
+
+					homeBackground.addEventListener("mousemove", function(e) {
+
+						const rect = homeBackground.getBoundingClientRect();
+
+						const x = e.clientX - rect.left;
+						const y = e.clientY - rect.top;
+
+						homeBackground.style.setProperty("--mouse-x", x + "px");
+						homeBackground.style.setProperty("--mouse-y", y + "px");
+					});
+
+					homeBackground.addEventListener("mouseleave", function() {
+
+						homeBackground.style.setProperty("--mouse-x", "50%");
+						homeBackground.style.setProperty("--mouse-y", "50%");
+					});
+
+
+
 				</script>
 			</footer>
 		
