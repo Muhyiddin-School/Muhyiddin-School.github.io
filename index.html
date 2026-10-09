@@ -33,8 +33,8 @@
 					<a href="about.html"><p class="nav_buttons"> About </p></a>		
 					<a href="forms.html"><p class="nav_buttons"> Forms </p></a>					
 					<a href="documents.html"><p class="nav_buttons"> Documents </p></a>
-					<a href="gallery.html"><p class="nav_buttons"> Gallery </p></a>
 					<a href="Policies.html"><p class="nav_buttons"> Policies </p></a>
+					<a href="gallery.html"><p class="nav_buttons"> Gallery </p></a>
 					<a href="https://www.facebook.com/muhyiddinschool"><p class="nav_buttons">Facebook</p></a>	
 					<a href="https://staff.muhyiddin.edu.mv/"><p class="nav_buttons"> Staff Portal </p></a>
 					<a href="contacts.html"><p class="nav_buttons"> Contact Us </p></a>
@@ -53,8 +53,8 @@
 				<a href="about.html">About</a>
 				<a href="forms.html">Forms</a>
 				<a href="documents.html">Documents</a>
-				<a href="gallery.html">Gallery</a>
 				<a href="Policies.html">Policies</a>
+				<a href="gallery.html">Gallery</a>
 				<a href="https://www.facebook.com/muhyiddinschool">Facebook</a>
 				<a href="https://staff.muhyiddin.edu.mv/">Staff Portal</a>
 				<a href="contacts.html">Contact Us</a>
@@ -161,21 +161,21 @@
 					
 					--!>
 					
-					<div class="restricted_width_box" id="home_Policies_box">
+					<div class="restricted_width_box" id="home_news_box">
 
 						<div class="light_card">
 
 							<h4>Latest Updates</h4>
 
-							<div class="Policies_scroll_wrapper">
+							<div class="news_scroll_wrapper">
 
 								<!-- Left Button -->
-								<button class="Policies_scroll_button Policies_left" onclick="scrollPolicies(-1)">
+								<button class="news_scroll_button news_left" onclick="scrollPolicies(-1)">
 									&#10094;
 								</button>
 
 
-								<div class="Policies_scroll" id="Policies_scroll">
+								<div class="news_scroll" id="news_scroll">
 								
 								<!--- 
 								=========
@@ -184,15 +184,15 @@
 								
 								1. TO SHOW UP THE DETAILED POPUP ON CLICK
 								
-									<a href="#" class="Policies_item" onclick="openPolicies(this); return false;">
-										<div class="Policies_card">
+									<a href="#" class="news_item" onclick="openPolicies(this); return false;">
+										<div class="news_card">
 											<tag>ACADEMIC</tag>
 											<t>(Test) Olevel Exams Started</t>
 											<date>9/9/2026</date>
 										</div>
 
 										
-										<div class="Policies_popup_data">
+										<div class="news_popup_data">
 
 											<h2>Olevel Exams Started</h2>
 
@@ -213,8 +213,8 @@
 									
 								2. TO REDIRECT TO ANOTHER PAGE OR SITE ON CLICK
 									
-									<a href="about.html" class="Policies_item">
-										<div class="Policies_card">
+									<a href="about.html" class="news_item">
+										<div class="news_card">
 											<tag>INFO</tag>
 											<t>About Us Updated</t>
 											<date>9/9/2026</date>
@@ -224,9 +224,24 @@
 								
 								-->
 								
+									<a href="documents.html" class="news_item">
+										<div class="news_card">
+											<tag>DOCUMENTS</tag>
+											<t>Academic Calendar 2027 Uploaded</t>
+											<date>8/10/2026</date>
+										</div>
+									</a>
+									
+									<a href="Policies.html" class="news_item">
+										<div class="news_card">
+											<tag>POLICIES</tag>
+											<t>Service Charter Uploaded</t>
+											<date>7/10/2026</date>
+										</div>
+									</a>
 								
-									<a href="news/imgs/Olevel_Time_Table_2026.png" class="Policies_item">
-										<div class="Policies_card">
+									<a href="news/imgs/Olevel_Time_Table_2026.png" class="news_item">
+										<div class="news_card">
 											<tag>TIMETABLES</tag>
 											<t>O'Level Exam Timetable 2026</t>
 											<date>17/9/2026</date>
@@ -235,8 +250,8 @@
 									
 
 
-								<a href="documents.html" class="Policies_item">
-										<div class="Policies_card">
+								<a href="documents.html" class="news_item">
+										<div class="news_card">
 											<tag>DOCUMENTS</tag>
 											<t>School Uniform Details 2027 Uploaded</t>
 											<date>23/9/2026</date>
@@ -244,20 +259,14 @@
 									</a>
 									
 									
-									<a href="documents.html" class="Policies_item">
-										<div class="Policies_card">
-											<tag>DOCUMENTS</tag>
-											<t>Nursery Stationery List Uploaded</t>
-											<date>23/9/2026</date>
-										</div>
-									</a>
+									
 
 
 								</div>
 
 
 								<!-- Right Button -->
-								<button class="Policies_scroll_button Policies_right" onclick="scrollPolicies(1)">
+								<button class="news_scroll_button news_right" onclick="scrollPolicies(1)">
 									&#10095;
 								</button>
 
@@ -272,19 +281,19 @@
 						 Policies POPUP
 					========================================= -->
 
-					<div class="Policies_popup" id="Policies_popup">
+					<div class="news_popup" id="news_popup">
 
-						<div class="Policies_popup_box">
+						<div class="news_popup_box">
 
-							<button class="Policies_popup_close" onclick="closePolicies()">
+							<button class="news_popup_close" onclick="closePolicies()">
 								&times;
 							</button>
 
-							<h2 id="Policies_popup_title"></h2>
+							<h2 id="news_popup_title"></h2>
 
-							<img id="Policies_popup_image" src="" alt="">
+							<img id="news_popup_image" src="" alt="">
 
-							<div id="Policies_popup_details"></div>
+							<div id="news_popup_details"></div>
 
 						</div>
 
@@ -300,13 +309,14 @@
 								
 								
 								<div class="light_card"> 
-									<tag>INFOMATION</tag>
+									<tag>INFORMATION</tag>
 									<h2> School Moto </h2>
 										
 										<t class="home_info_eng">
 											Strive For Success
 										</t>
 										<br/>
+										<h2_d> ސްކޫލް މޮޓޯ</h2_d>
 										<d class="home_info_dhiv">
 								       އަރުތަ ޙާޞިލުކުރުމަށް ގަދައަޅައި މަސައްކަތްކުރާށެވެ
 										</d>
@@ -316,7 +326,7 @@
 								<img class="image"  src="schl_imgs/school/new_building.jpg">
 								
 								<div class="light_card"> 
-									<tag>INFOMATION</tag>
+									<tag>INFORMATION</tag>
 									<h2> School Vision </h2>
 										
 										<t class="home_info_eng">
@@ -324,6 +334,7 @@
 										</t>
 										<br/>
 										<br/>
+										<h2_d> ސްކޫލް ވިޝަން</h2_d>
 										<d class="home_info_dhiv">
 								        ބަދަލުވަމުންދާ މުޖުތަމައެއްގައި ދިރިއުޅުމަށްޓަކައި ކޮންމެ ފަރުދަކަށްމެ ބޭނުންވާނޭ އެންމެހައި ޤާބިލިއްޔަތު ޝާމިލުވާ ތަޢުލީމެއް ފޯރުކޮށްދޭ މާދިރީ މުއައްސަސާއަކަށްވުމެވެ
 										</d>
@@ -335,7 +346,7 @@
 								
 								
 								<div class="light_card"> 
-									<tag>INFOMATION</tag>
+									<tag>INFORMATION</tag>
 									<h2> About Us </h2>
 										
 										<t>Muhyiddin School is named after the king, Al Sultan Mohamed Muhyiddeenul A’dil Siri Naakiree Sundhara Mahaaradhun, who ruled the country from 1691 to 1692. He was an eminent scholar and a prominent intellectual who contributed a great deal to improve the education and religious awareness in the country. </t>
@@ -349,7 +360,7 @@
 								
 								
 								<div class="light_card"> 
-									<tag>INFOMATION</tag>
+									<tag>INFORMATION</tag>
 									<h2> School Mission </h2>
 										
 										<t class="home_info_eng">
@@ -358,7 +369,8 @@
 										Our students will be thoughtful and morally strong citizens who will thrive successfully in a diverse and evolving world.
 										</t>
 										<br/>	
-										<br/>	
+										<br/>
+										<h2_d> ސްކޫލް މިޝަން</h2_d>										
 										<d class="home_info_dhiv">
 										ތަރައްޤީއަށް ދަތުރުކުރާ ދުނިޔެއެއްގައި އީޖާދީ ފުދުންތެރި ދިރިއުޅުމަކަށް ފަހި، ހުނަރުވެރި ހަރުދަނާ ޙިކުމަތްތެރި މުވާޠިނުންތަކެއް އުފެއްދުމެވެ
 										</d>
@@ -383,12 +395,14 @@
 					<div class="muh_background_box" id="core_values_box">
 						<div class="restricted_width_box">
 							<h1 id="core_values" style="color: #ffffff;"> Core Values </h1>
+							
 							<div class="grid2_box_masonry" id="home_values" style=" margin-top: 50px;">
 								
 								<div class="light_card_no_padding"> 
 									<center>
 										<img class="image_full"  src="schl_imgs/students_praying_mosque_2.jpg">
-										<h3> Faith In Islam </h3>
+										<h3> Faith In Allah </h3>
+										<h3_d>الله އަށް އީމާންވުން</h3_d>
 									</center>
 								</div>
 								
@@ -396,6 +410,7 @@
 									<center>
 										<img class="image_full"  src="schl_imgs/muh_compound_small_students.jpg">
 										<h3> Love For The Nation </h3>
+										<h3_d> ވަޠަނީ ލޯބި އުފެއްދުން</h3_d>
 									</center>
 								</div>
 								
@@ -403,13 +418,15 @@
 									<center>
 										<img class="image_full"  src="schl_imgs/default2.JPG">
 										<h3> Character Building </h3>
+										<h3_d> ޝަޚްޟު ބިނާކުރުން</h3_d>
 									</center>
 								</div>
 								
 								<div class="light_card_no_padding"> 
 									<center>
 										<img class="image_full"  src="schl_imgs/student_helping_another_srudent_wth_chrome_book.jpg">
-										<h3> Self Directed Learning </h3>
+										<h3> Self Directed Learning</h3>
+										<h3_d> އަމިއްލައަށް އުނގެނުމަށް މަސައްކަތްކުރުން</h3_d>
 									</center>
 								</div>
 								
@@ -417,6 +434,7 @@
 									<center>
 										<img class="image_full"  src="schl_imgs/student_handshake_with_principal.jpg">
 										<h3> Respect </h3>
+										<h3_d> އިޙްތިރާމްކުރުން</h3_d>
 									</center>
 								</div>
 								
@@ -475,23 +493,23 @@
 							</br>
 							</br>
 							</br>
-							
 							<div class="light_card" style="padding-bottom:0px;padding-top:0px;"> 
-							
-								<h4>
-									We value your feedback! Please share your thoughts and suggestions to help us improve our services.
-								</h4>
-								<!---
-								<h4_dhiv >
-								    ޙިދުމަތުގެ ފެންވަރު ރަނގަޅުކުރުމަށް ތިޔަ ފަރާތުގެ ޚިޔާލު ވަރަށް މުހިއްމު
-								</h4_dhiv>
-								--->
-								<div class="grid_2button_right">
-									<a href="http://csc.gov.mv/page/contactus?officename=މުޙްޔިއްދީން+ސްކޫލް&eoid=hfCOxDLICzCH3L2OrOe9RQ#hiyaalu">
-										<p class="muh_button">Share Your Feedback</p>
-									</a>
-								</div>
-													
+								
+									<h4>
+										We value your feedback! Please share your thoughts and suggestions to help us improve our services.
+									</h4>
+									
+									<h4_d>
+										އަޅުގަނޑުމެން ތިޔަބޭފުޅުންގެ ފީޑްބެކް އަގުވަޒަން ކުރަން! އަޅުގަނޑުމެންގެ ޚިދުމަތްތައް ރަނގަޅު ކުރުމަށް އެހީތެރިވެދެއްވުމަށް ތިޔަބޭފުޅުންގެ ޚިޔާލާއި ހުށަހެޅުންތައް ހިއްސާކުރެއްވުން އެދެން
+									</h4_d>
+									
+									<br/>
+									<div class="grid_2button_right">
+										<a href="http://csc.gov.mv/page/contactus?officename=މުޙްޔިއްދީން+ސްކޫލް&eoid=hfCOxDLICzCH3L2OrOe9RQ#hiyaalu">
+											<p class="muh_button">Share Your Feedback</p>
+										</a>
+									</div>
+														
 							</div>
 					</div>		
 
@@ -568,7 +586,8 @@
 					<div>
 						<fh>Website</fh>
 						<ft><a href="legal/privacy_policy.html">Privacy Policy</a></ft>
-						<ft><a href="credits.html"></a></ft>
+						<ft><a href="credits.html">Credits</a></ft>
+						<ft><a href="https://Muhyiddin-School.github.io/sitemap.xml">Sitemap</a></ft>
 					
 					</div>	
 				</div>
@@ -585,7 +604,7 @@
 					
 					// Policies scroll
 					function scrollPolicies(direction) { 
-					const PoliciesScroll = document.getElementById("Policies_scroll"); 
+					const PoliciesScroll = document.getElementById("news_scroll"); 
 					const scrollAmount = 380; 
 					PoliciesScroll.scrollBy({ left: direction * scrollAmount, behavior: "smooth" }); 
 					}
@@ -594,25 +613,25 @@
 					// Policies popup
 					function openPolicies(PoliciesItem) {
 
-						const data = PoliciesItem.querySelector(".Policies_popup_data");
+						const data = PoliciesItem.querySelector(".news_popup_data");
 
 						const title = data.querySelector("h2");
 						const image = data.querySelector("img");
 						const details = data.querySelector("details");
 
-						document.getElementById("Policies_popup_title").textContent =
+						document.getElementById("news_popup_title").textContent =
 							title.textContent;
 
-						document.getElementById("Policies_popup_image").src =
+						document.getElementById("news_popup_image").src =
 							image.src;
 
-						document.getElementById("Policies_popup_image").alt =
+						document.getElementById("news_popup_image").alt =
 							image.alt;
 
-						document.getElementById("Policies_popup_details").innerHTML =
+						document.getElementById("news_popup_details").innerHTML =
 							details.innerHTML;
 
-						document.getElementById("Policies_popup").classList.add("show");
+						document.getElementById("news_popup").classList.add("show");
 
 						document.body.style.overflow = "hidden";
 					}
@@ -620,7 +639,7 @@
 
 					function closePolicies() {
 
-						document.getElementById("Policies_popup").classList.remove("show");
+						document.getElementById("news_popup").classList.remove("show");
 
 						document.body.style.overflow = "";
 					}
@@ -628,7 +647,7 @@
 
 					/* Close when clicking outside the popup box */
 
-					document.getElementById("Policies_popup").addEventListener("click", function(event) {
+					document.getElementById("news_popup").addEventListener("click", function(event) {
 
 						if (event.target === this) {
 							closePolicies();
@@ -646,6 +665,33 @@
 						}
 
 					});
+					
+					
+					
+					
+					/*Hover effect*/
+
+					const homeBackground = document.getElementById("home_background");
+
+					homeBackground.addEventListener("mousemove", function(e) {
+
+						const rect = homeBackground.getBoundingClientRect();
+
+						const x = e.clientX - rect.left;
+						const y = e.clientY - rect.top;
+
+						homeBackground.style.setProperty("--mouse-x", x + "px");
+						homeBackground.style.setProperty("--mouse-y", y + "px");
+					});
+
+					homeBackground.addEventListener("mouseleave", function() {
+
+						homeBackground.style.setProperty("--mouse-x", "50%");
+						homeBackground.style.setProperty("--mouse-y", "50%");
+					});
+
+
+
 				</script>
 			</footer>
 		

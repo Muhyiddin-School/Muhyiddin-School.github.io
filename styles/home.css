@@ -18,7 +18,7 @@
 } */
 
 
-#home_background {
+/* #home_background {
     min-height: calc(100vh - 450px);
 
     background:
@@ -78,7 +78,166 @@
 	opacity: 0;
 	animation: fade_in_up 0.5s forwards;
 	animation-delay: 0.3s;
+} */
+
+
+#home_background {
+    position: relative;
+    overflow: hidden;
+
+    min-height: calc(100vh - 450px);
+
+    background:
+        radial-gradient(
+              circle 55px at var(--mouse-x, 50%) var(--mouse-y, 50%),
+		rgba(235, 64, 52, 0.65) 0%,
+		rgba(235, 64, 52, 0.45) 15%,
+		rgba(235, 64, 52, 0.20) 30%,
+		rgba(235, 64, 52, 0.07) 50%,
+		transparent 75%
+        ),
+        linear-gradient(
+            192deg,
+            rgba(235, 64, 52, 0.7) 0%,
+            rgba(0, 0, 0, 0.85) 98%
+        ),
+        url("../schl_imgs/muh_compound_small_students.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding-top: 28vh;
+    padding-bottom: 12vh;
+
+    display: flex;
+    justify-content: center;
+
+    border-radius: 0 0 50px 50px;
 }
+
+#home_background::before {
+    content: "";
+    position: absolute;
+
+    width: 450px;
+    height: 450px;
+
+    left: var(--mouse-x, 50%);
+    top: var(--mouse-y, 50%);
+
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(
+        circle,
+        rgba(255, 255, 255, 0.12) 0%,
+        rgba(235, 64, 52, 0.12) 25%,
+        rgba(235, 64, 52, 0.05) 45%,
+        transparent 70%
+    );
+
+    pointer-events: none;
+    z-index: 1;
+
+    transition:
+        left 0.08s ease-out,
+        top 0.08s ease-out;
+}
+
+#home_background > div {
+    position: relative;
+    z-index: 2;
+}
+
+#home_background > div {
+    position: relative;
+    z-index: 2;
+}
+
+
+/* Content stays above the glow */
+#home_background > div {
+    position: relative;
+    z-index: 2;
+
+    transform-style: preserve-3d;
+}
+
+
+/* Logo gets the 3D movement */
+#home_main_image {
+    display: block;
+    max-width: 500px;
+    width: 200px;
+    height: auto;
+    margin: 0 auto;
+    scale: 2;
+
+    opacity: 0;
+
+    animation: fade_in_up 0.5s forwards;
+    animation-delay: 0.2s;
+
+    /* JS controls these */
+    transform:
+        translate3d(
+            var(--logo-x, 0px),
+            var(--logo-y, 0px),
+            0
+        )
+        rotateX(var(--logo-rotate-x, 0deg))
+        rotateY(var(--logo-rotate-y, 0deg));
+
+    transition: transform 0.15s ease-out;
+}
+
+
+/* Text moves slightly less than logo */
+#home_main_text {
+    color: #ffffff;
+    white-space: pre-line;
+    font-size: 50px;
+    padding-top: 0px;
+    margin-top: 20px;
+    margin-bottom: 60px;
+    text-align: center;
+
+    text-shadow:
+        0 0 10px #eb4034,
+        0 0 20px #eb4034,
+        0 0 30px #eb4034;
+
+    opacity: 0;
+
+    animation: fade_in_up 0.5s forwards;
+    animation-delay: 0.3s;
+
+    transform:
+        translate3d(
+            var(--text-x, 0px),
+            var(--text-y, 0px),
+            0
+        );
+
+    transition: transform 0.2s ease-out;
+}
+
+
+/* Don't run fancy mouse effects on touch devices */
+@media (hover: none) {
+    #home_background::before {
+        display: none;
+    }
+
+    #home_main_image,
+    #home_main_text {
+        transform: none !important;
+    }
+}
+
+
+
+
 
 #home_main_button {
 	text-align: center;
@@ -247,12 +406,25 @@
 
 #home_values .light_card_no_padding h3 {
     position: absolute;
-    top: 50%;
+    top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);
     margin: 0;
     color: #ffffff;
-	text-shadow: 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 30px #000000;
+	text-shadow: 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 30px #000000;
+    text-align: center;
+    width: 90%;
+    z-index: 2;
+}
+
+#home_values .light_card_no_padding h3_d {
+    position: absolute;
+    top: 60%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    margin: 0;
+    color: #ffffff;
+	text-shadow: 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 20px #000000, 0px 0px 30px #000000;
     text-align: center;
     width: 90%;
     z-index: 2;
@@ -309,10 +481,10 @@
 Policies HORIZONTAL SCROLL 
 ========================================= */ 
 
-#home_Policies_box {
+#home_news_box {
 	margin-top: 30px;
 }
-.Policies_scroll_wrapper { 
+.news_scroll_wrapper { 
  position: relative;
  display: flex;
  align-items: center;
@@ -320,7 +492,7 @@ Policies HORIZONTAL SCROLL
  margin-top: 0px;
  } 
 
-.Policies_scroll { 
+.news_scroll { 
  display: flex;
  gap: 20px; width: 100%;
  overflow-x: auto;
@@ -329,12 +501,12 @@ Policies HORIZONTAL SCROLL
  padding: 10px 5px;
  } 
 
-.Policies_scroll::-webkit-scrollbar { 
+.news_scroll::-webkit-scrollbar { 
  display: none;
  } 
  
 /* Policies cards */ 
-.Policies_card { 
+.news_card { 
 	flex: 0 0 300px;
     width: 300px;
  
@@ -355,14 +527,14 @@ Policies HORIZONTAL SCROLL
 
 } 
  
-.Policies_card:hover { 
+.news_card:hover { 
 	
 	background-color: #fafafa;
 
 } 
 
 /* Scroll buttons */ 
-.Policies_scroll_button { 
+.news_scroll_button { 
  position: absolute;
  z-index: 5; 
  width: 40px;
@@ -379,36 +551,36 @@ Policies HORIZONTAL SCROLL
  justify-content: center;
  transition: background-color 0.2s ease, color 0.2s ease, transform 0.2s ease; } 
 
-.Policies_scroll_button:hover { 
+.news_scroll_button:hover { 
  background-color: #202020; 
  color: white; 
  } 
 
-.Policies_left { 
+.news_left { 
  left: -32px; 
 } 
 
-.Policies_right { 
+.news_right { 
  right: -32px; 
 } 
 
 /* Mobile */
 @media (max-width: 700px) { 
-	.Policies_card { 
+	.news_card { 
 	 flex: 0 0 85%; 
 	} 
 
-	.Policies_scroll_button { 
+	.news_scroll_button { 
 	 width: 35px; 
 	 height: 35px; 
 	 font-size: 18px; 
 	} 
 
-	.Policies_left { 
+	.news_left { 
 	 left: -32px; 
 	} 
 
-	.Policies_right { 
+	.news_right { 
 	right: -32px; 
 	} 
 
@@ -419,7 +591,7 @@ Policies HORIZONTAL SCROLL
    Policies POPUP
 ========================================= */
 
-.Policies_popup {
+.news_popup {
     position: fixed;
     inset: 0;
     z-index: 9999;
@@ -439,14 +611,14 @@ Policies HORIZONTAL SCROLL
     transition: opacity 0.2s ease, visibility 0s linear 0.2s;
 }
 
-.Policies_popup.show {
+.news_popup.show {
     opacity: 1;
     visibility: visible;
 
     transition: opacity 0.2s ease, visibility 0s linear 0s;
 }
 
-.Policies_popup_box {
+.news_popup_box {
     position: relative;
 
     width: 100%;
@@ -469,14 +641,14 @@ Policies HORIZONTAL SCROLL
         transform 0.2s ease;
 }
 
-.Policies_popup.show .Policies_popup_box {
+.news_popup.show .news_popup_box {
     opacity: 1;
     transform: scale(1);
 }
 
 /* Close button */
 
-.Policies_popup_close {
+.news_popup_close {
     position: absolute;
     top: 12px;
     right: 15px;
@@ -503,7 +675,7 @@ Policies HORIZONTAL SCROLL
     transition: 0.2s ease;
 }
 
-.Policies_popup_close:hover {
+.news_popup_close:hover {
     background: #202020;
     color: #ffffff;
 }
@@ -511,7 +683,7 @@ Policies HORIZONTAL SCROLL
 
 /* Popup heading */
 
-.Policies_popup_box h2 {
+.news_popup_box h2 {
     margin: 0 50px 20px 0;
 	font-size: 30px;
 }
@@ -519,7 +691,7 @@ Policies HORIZONTAL SCROLL
 
 /* Popup image */
 
-.Policies_popup_box img {
+.news_popup_box img {
     display: block;
 
     width: 100%;
@@ -535,7 +707,7 @@ Policies HORIZONTAL SCROLL
 
 /* Popup details */
 
-#Policies_popup_details {
+#news_popup_details {
 	 white-space: pre-line;
     font-size: 15px;
     line-height: 1.7;
@@ -544,7 +716,7 @@ Policies HORIZONTAL SCROLL
 
 /* Hidden data inside each Policies item */
 
-.Policies_popup_data {
+.news_popup_data {
     display: none;
 }
 
@@ -571,7 +743,8 @@ Policies HORIZONTAL SCROLL
     transition: transform 0.4s ease;
 }
 
-#core_values_box .light_card_no_padding h3 {
+#core_values_box .light_card_no_padding h3,
+#core_values_box .light_card_no_padding h3_d {
     transition: font-size 0.25s ease;
 }
 
@@ -583,7 +756,8 @@ Policies HORIZONTAL SCROLL
     transform: scale(1.06);
 }
 
-#core_values_box .light_card_no_padding:hover h3 {
+#core_values_box .light_card_no_padding:hover h3,
+#core_values_box .light_card_no_padding:hover h3_d {
 	font-size: 40px;
 }
 
@@ -591,16 +765,16 @@ Policies HORIZONTAL SCROLL
 
 @media (max-width: 700px) {
 
-    .Policies_popup {
+    .news_popup {
         padding: 12px;
     }
 
-    .Policies_popup_box {
+    .news_popup_box {
         padding: 30px 20px;
         border-radius: 15px;
     }
 
-    .Policies_popup_box img {
+    .news_popup_box img {
         max-height: 300px;
     }
 
