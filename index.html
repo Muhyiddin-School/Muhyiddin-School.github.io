@@ -27,9 +27,10 @@
 		
 		<body>
 			<!-- Navigation Bar Start-->
-			<div id="nav_bar">			
+			<div id="nav_bar" class="home_nav">			
 				<a href="index.html"><div  id="nav_logo"><img style="height:100%;" src="imgs/banner_logo.png"/></div></a>				
 				<div id="nav_buttons_box_desktop">
+								<a href="index.html"><p class="nav_buttons">Home</p></a>
 					<a href="about.html"><p class="nav_buttons"> About </p></a>		
 					<a href="forms.html"><p class="nav_buttons"> Forms </p></a>					
 					<a href="documents.html"><p class="nav_buttons"> Documents </p></a>
@@ -40,16 +41,13 @@
 					<a href="contacts.html"><p class="nav_buttons"> Contact Us </p></a>
 				</div>						
 				
-				<div id="nav_dropdown_button">
-				<svg id="nav_dropdown_more_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="40" height="40">
-					<rect x="5" y="5" width="20" height="2" fill="#000000"/><rect x="5" y="11" width="20" height="2" fill="#000000"/><rect x="5" y="17" width="20" height="2" fill="#000000"/>
-				</svg>	
-				<svg id="nav_dropdown_close_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-					<rect x="1" y="10" width="16" height="2" fill="#000000" transform="rotate(45 12 12)"/><rect x="8" y="3" width="2" height="16" fill="#000000" transform="rotate(45 12 12)"/>
-				</svg>		
-				</div>			
+				<button id="nav_dropdown_button" type="button" aria-label="Open navigation menu" aria-controls="nav_dropdown_content" aria-expanded="false">
+				<svg id="nav_dropdown_more_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>	
+				<svg id="nav_dropdown_close_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>		
+				</button>			
 			</div>
 			<div id="nav_dropdown_content">
+				<a href="index.html">Home</a>
 				<a href="about.html">About</a>
 				<a href="forms.html">Forms</a>
 				<a href="documents.html">Documents</a>
@@ -60,33 +58,43 @@
 				<a href="contacts.html">Contact Us</a>
 			</div>	
 			<script type="text/javascript">
-				// nav dropdown toggle script
-					const dropdownButton = document.getElementById('nav_dropdown_button');
-					const dropdownContent = document.getElementById('nav_dropdown_content');
-					const dropdownClose = document.getElementById('nav_dropdown_close_icon');
-					const dropdownMore = document.getElementById('nav_dropdown_more_icon');
-					dropdownButton.addEventListener('click', function() {
-					  if (dropdownContent.style.display === 'block') {
-						dropdownContent.style.display = 'none'; 
-						dropdownClose.style.display = 'none'; 
-						dropdownMore.style.display = 'block'; 
-					  } else {
-						dropdownContent.style.display = 'block';
-						dropdownClose.style.display = 'block'; 
-						dropdownMore.style.display = 'none'; 
-					  }
-					});
-			</script>
+				const dropdownButton = document.getElementById('nav_dropdown_button');
+const dropdownContent = document.getElementById('nav_dropdown_content');
+function setNavigationOpen(open) {
+  dropdownButton.classList.toggle('is-open', open);
+  dropdownContent.classList.toggle('is-open', open);
+  dropdownButton.setAttribute('aria-expanded', String(open));
+  dropdownButton.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+}
+dropdownButton.addEventListener('click', () => setNavigationOpen(!dropdownContent.classList.contains('is-open')));
+dropdownContent.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setNavigationOpen(false)));
+document.addEventListener('pointerdown', (event) => {
+  if (!dropdownButton.contains(event.target) && !dropdownContent.contains(event.target)) setNavigationOpen(false);
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && dropdownContent.classList.contains('is-open')) {
+    setNavigationOpen(false);
+    dropdownButton.focus();
+  }
+});</script>
 			<!-- Navigation Bar End-->
 					
 			<main>
 					<div id="home_background">
 						<div>
 							<div>
-								<img id="home_main_image" src="imgs/Muh_icon_glow_small.png" />
+								<img id="home_main_image" src="imgs/Muh_icon_glow_small.png" alt="Muhyiddin School crest" />
 							</div>
 							<p id="home_main_text">
 								<b><wg>MUHYIDDIN SCHOOL</wg></b>
+							</p>
+									
+							<p class="home_hero_tagline">
+								<span>Baby Nursery</span>
+								<i aria-hidden="true"></i>
+								<span>Nursery</span>
+								<i aria-hidden="true"></i>
+								<span>Grades 1-10</span>
 							</p>
 							
 							<!---
@@ -101,17 +109,30 @@
 							
 							
 							
-							<div id="home_main_button">
-								<!---
-								<a href="about.html"><p class="glow_button" >About Us</p></a>
-								--!>
-							</div>
+							<div id="home_main_button"><a class="hero_apply_button glow_button" href="forms.html" target="_blank" rel="noopener">Apply for Admission <span aria-hidden="true">↗</span></a></div>
 							
 							
 							
 							
 						</div>
 					</div>
+<section id="home_stats" aria-label="Muhyiddin School at a glance">
+  <div class="home_stats_card">
+    <div class="home_stat">
+      <span class="home_stat_number" data-count="900" data-suffix="+">0+</span>
+      <span class="home_stat_label">Students</span>
+    </div>
+    <div class="home_stat">
+      <span class="home_stat_number" data-count="130" data-suffix="+">0+</span>
+      <span class="home_stat_label">Teachers</span>
+    </div>
+    <div class="home_stat">
+      <span class="home_stat_number" data-since="1999-06-07">0</span>
+      <span class="home_stat_label">Years of service</span>
+      <span class="home_stat_note">Since 7 June 1999</span>
+    </div>
+  </div>
+</section>
 					
 					<!---
 					<div class="restricted_width_box" id="home_contact_box">
@@ -301,9 +322,9 @@
 				
 					
 					
-					<div class="restricted_width_box"
+					<div class="restricted_width_box" id="home_info_section">
 						<h1 id="info"> </h1>
-						<div class="grid2_box_masonry" style=" margin-top: 50px;">
+						<div class="grid2_box_masonry" id="home_info_grid" style=" margin-top: 50px;">
 						
 								<img class="image scroll_reveal"  src="schl_imgs/school/muh3.jpg">
 								
@@ -398,40 +419,45 @@
 							
 							<div class="grid2_box_masonry" id="home_values" style=" margin-top: 50px;">
 								
-								<div class="light_card_no_padding"> 
+								<div class="light_card_no_padding core_value_card">
 									<center>
+										<span class="core_value_index" aria-hidden="true">1</span>
 										<img class="image_full"  src="schl_imgs/students_praying_mosque_2.jpg">
 										<h3> Faith In Allah </h3>
 										<h3_d>الله އަށް އީމާންވުން</h3_d>
 									</center>
 								</div>
 								
-								<div class="light_card_no_padding"> 
+								<div class="light_card_no_padding core_value_card">
 									<center>
+										<span class="core_value_index" aria-hidden="true">2</span>
 										<img class="image_full"  src="schl_imgs/muh_compound_small_students.jpg">
 										<h3> Love For The Nation </h3>
 										<h3_d> ވަޠަނީ ލޯބި އުފެއްދުން</h3_d>
 									</center>
 								</div>
 								
-								<div class="light_card_no_padding"> 
+								<div class="light_card_no_padding core_value_card">
 									<center>
+										<span class="core_value_index" aria-hidden="true">3</span>
 										<img class="image_full"  src="schl_imgs/default2.JPG">
 										<h3> Character Building </h3>
 										<h3_d> ޝަޚްޟު ބިނާކުރުން</h3_d>
 									</center>
 								</div>
 								
-								<div class="light_card_no_padding"> 
+								<div class="light_card_no_padding core_value_card">
 									<center>
+										<span class="core_value_index" aria-hidden="true">4</span>
 										<img class="image_full"  src="schl_imgs/student_helping_another_srudent_wth_chrome_book.jpg">
 										<h3> Self Directed Learning</h3>
 										<h3_d> އަމިއްލައަށް އުނގެނުމަށް މަސައްކަތްކުރުން</h3_d>
 									</center>
 								</div>
 								
-								<div class="light_card_no_padding"> 
+								<div class="light_card_no_padding core_value_card">
 									<center>
+										<span class="core_value_index" aria-hidden="true">5</span>
 										<img class="image_full"  src="schl_imgs/student_handshake_with_principal.jpg">
 										<h3> Respect </h3>
 										<h3_d> އިޙްތިރާމްކުރުން</h3_d>
@@ -695,8 +721,19 @@
 				</script>
 			</footer>
 		
-		</body>
+		<script defer src="styles/nav-bubble.js"></script>
+<script defer src="styles/home-nav.js"></script>
+<script defer src="styles/home-stats.js"></script>
+</body>
 		
 		
 		
 	</html>
+
+
+
+
+
+
+
+

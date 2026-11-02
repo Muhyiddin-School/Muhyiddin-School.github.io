@@ -33,6 +33,7 @@
 			<div id="nav_bar">			
 				<a href="index.html"><div  id="nav_logo"><img style="height:100%;" src="imgs/banner_logo.png"/></div></a>				
 				<div id="nav_buttons_box_desktop">
+								<a href="index.html"><p class="nav_buttons">Home</p></a>
 					<a href="about.html"><p class="nav_buttons"> About </p></a>		
 					<a href="forms.html"><p class="nav_buttons"> Forms </p></a>					
 					<a href="documents.html"><p class="nav_buttons"> Documents </p></a>
@@ -43,16 +44,13 @@
 					<a href="contacts.html"><p class="nav_buttons"> Contact Us </p></a>
 				</div>						
 				
-				<div id="nav_dropdown_button">
-				<svg id="nav_dropdown_more_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 30 30" width="40" height="40">
-					<rect x="5" y="5" width="20" height="2" fill="#000000"/><rect x="5" y="11" width="20" height="2" fill="#000000"/><rect x="5" y="17" width="20" height="2" fill="#000000"/>
-				</svg>	
-				<svg id="nav_dropdown_close_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24">
-					<rect x="1" y="10" width="16" height="2" fill="#000000" transform="rotate(45 12 12)"/><rect x="8" y="3" width="2" height="16" fill="#000000" transform="rotate(45 12 12)"/>
-				</svg>		
-				</div>			
+				<button id="nav_dropdown_button" type="button" aria-label="Open navigation menu" aria-controls="nav_dropdown_content" aria-expanded="false">
+				<svg id="nav_dropdown_more_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>	
+				<svg id="nav_dropdown_close_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>		
+				</button>			
 			</div>
 			<div id="nav_dropdown_content">
+				<a href="index.html">Home</a>
 				<a href="about.html">About</a>
 				<a href="forms.html">Forms</a>
 				<a href="documents.html">Documents</a>
@@ -63,23 +61,25 @@
 				<a href="contacts.html">Contact Us</a>
 			</div>	
 			<script type="text/javascript">
-				// nav dropdown toggle script
-					const dropdownButton = document.getElementById('nav_dropdown_button');
-					const dropdownContent = document.getElementById('nav_dropdown_content');
-					const dropdownClose = document.getElementById('nav_dropdown_close_icon');
-					const dropdownMore = document.getElementById('nav_dropdown_more_icon');
-					dropdownButton.addEventListener('click', function() {
-					  if (dropdownContent.style.display === 'block') {
-						dropdownContent.style.display = 'none'; 
-						dropdownClose.style.display = 'none'; 
-						dropdownMore.style.display = 'block'; 
-					  } else {
-						dropdownContent.style.display = 'block';
-						dropdownClose.style.display = 'block'; 
-						dropdownMore.style.display = 'none'; 
-					  }
-					});
-			</script>
+				const dropdownButton = document.getElementById('nav_dropdown_button');
+const dropdownContent = document.getElementById('nav_dropdown_content');
+function setNavigationOpen(open) {
+  dropdownButton.classList.toggle('is-open', open);
+  dropdownContent.classList.toggle('is-open', open);
+  dropdownButton.setAttribute('aria-expanded', String(open));
+  dropdownButton.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+}
+dropdownButton.addEventListener('click', () => setNavigationOpen(!dropdownContent.classList.contains('is-open')));
+dropdownContent.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setNavigationOpen(false)));
+document.addEventListener('pointerdown', (event) => {
+  if (!dropdownButton.contains(event.target) && !dropdownContent.contains(event.target)) setNavigationOpen(false);
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && dropdownContent.classList.contains('is-open')) {
+    setNavigationOpen(false);
+    dropdownButton.focus();
+  }
+});</script>
 			<!-- Navigation Bar End-->
 				
 			<main>
@@ -373,5 +373,8 @@
 				</script>
 			</footer>
 		
-		</body>
+		<script defer src="styles/nav-bubble.js"></script>
+</body>
 	</html>
+
+

@@ -254,6 +254,79 @@ i {
 	background-color: rgb(170, 170, 170, 0.3);
 }
 
+/* Themed link tiles shared by the Documents and Forms pages */
+.doc_content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    box-sizing: border-box;
+    min-height: 54px;
+    padding: 12px 16px 12px 20px;
+    overflow: hidden;
+    border: 1px solid #eadcde;
+    border-radius: 14px;
+    background: linear-gradient(110deg, #fff 0%, #fff 64%, #fff7f7 100%);
+    color: #30343a;
+    box-shadow: 0 4px 12px rgba(45,28,31,.045);
+    cursor: pointer;
+    text-align: left;
+    text-decoration: none;
+    transition: transform .24s ease, border-color .24s ease, background .24s ease, color .24s ease, box-shadow .24s ease;
+}
+.doc_content::before {
+    content: '';
+    position: absolute;
+    inset: 10px auto 10px 0;
+    width: 3px;
+    border-radius: 0 4px 4px 0;
+    background: linear-gradient(180deg, #d45b60, #912630);
+    transition: inset .24s ease, width .24s ease;
+}
+.doc_content::after {
+    content: '↗';
+    display: grid;
+    flex: 0 0 30px;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid rgba(169,47,55,.14);
+    border-radius: 50%;
+    background: #fbf0f0;
+    color: #982a34;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1;
+    transition: transform .24s ease, color .24s ease, background .24s ease, border-color .24s ease;
+}
+.doc_content:hover,
+a:hover .doc_content,
+.doc_content:focus-visible {
+    transform: translateY(-2px);
+    border-color: rgba(169,47,55,.34);
+    background: linear-gradient(110deg, #fff 0%, #fff8f8 55%, #fbeded 100%);
+    color: #842630;
+    box-shadow: 0 10px 22px rgba(114,34,42,.11);
+    text-decoration: none;
+}
+.doc_content:hover::before,
+a:hover .doc_content::before,
+.doc_content:focus-visible::before {
+    inset-block: 0;
+    width: 4px;
+}
+.doc_content:hover::after,
+a:hover .doc_content::after,
+.doc_content:focus-visible::after {
+    transform: translateX(2px);
+    border-color: rgba(169,47,55,.28);
+    background: #982a34;
+    color: #fff;
+}
+a:focus-visible .doc_content { outline: 3px solid rgba(169,47,55,.25); outline-offset: 3px; }
+.doc_content:active { transform: translateY(0); }
+
 .doc_image {
     display: block;
     max-width: 100%;
