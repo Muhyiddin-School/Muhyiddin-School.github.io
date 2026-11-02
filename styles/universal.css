@@ -1724,14 +1724,14 @@ h1:not(#info)::after {
 #nav_dropdown_content a:hover,
 #nav_dropdown_content a[aria-current="page"] { color: #a92f37; background: #f8e9e9; }
 @keyframes nav-underline-flow { to { background-position: -220% 0; } }
-@media (max-width: 1240px) {
+@media (max-width: 1540px) {
     #nav_bar { display: flex; height: 70px; min-height: 70px; padding: 0 22px; }
     #nav_logo { height: 56px; }
     #nav_buttons_box_desktop { display: none; }
     #nav_dropdown_button { display: flex; }
     #nav_dropdown_content { top: 70px; }
 }
-@media (min-width: 1241px) {
+@media (min-width: 1541px) {
     #nav_bar { display: grid; grid-template-columns: 1fr 1fr 1fr; }
     #nav_buttons_box_desktop { display: flex; }
     #nav_dropdown_button, #nav_dropdown_content { display: none; }
@@ -1797,7 +1797,7 @@ html body :is(a, button, [role="button"], input[type="button"], input[type="subm
 }
 
 /* Mobile navigation button alignment and menu motion */
-@media (max-width: 1240px) {
+@media (max-width: 1540px) {
     #nav_dropdown_button {
         position: relative;
         display: grid;
@@ -1873,7 +1873,7 @@ html body :is(a, button, [role="button"], input[type="button"], input[type="subm
     }
     #nav_dropdown_content a:active { transform: scale(.985); }
 }
-@media (min-width: 1241px) {
+@media (min-width: 1541px) {
     #nav_dropdown_button { display: none; }
     #nav_dropdown_content { display: none; }
 }
@@ -1882,7 +1882,7 @@ html body :is(a, button, [role="button"], input[type="button"], input[type="subm
 }
 
 /* Keep the desktop home link scoped to the logo itself */
-@media (min-width: 1241px) {
+@media (min-width: 1541px) {
     #nav_bar > a:first-child {
         display: block;
         justify-self: start;
