@@ -1,4 +1,71 @@
 (() => {
+  const tooltipCopy = {
+    'index.html': {
+      en: 'Return to the school homepage.',
+      dv: 'ސްކޫލްގެ މައި ޞަފްޙާ',
+    },
+    'about.html': {
+      en: 'Learn about the school.',
+      dv: 'ސްކޫލްގެ މަޢުލޫމާތުތައް',
+    },
+    'forms.html': {
+      en: 'Find admission, transfer, rental and other school forms.',
+      dv: 'އެޑްމިޝަން، ޓްރާންސްފާ، ރެންޓަލް އަދި އެހެނިހެން ސްކޫލް ފޯމްތައް',
+    },
+    'documents.html': {
+      en: 'Download calendars, uniform details, stationary lists and other school documents.',
+      dv: 'ކަލަންޑަރާއި، ޔުނީފޯމްގެ ތަފްސީލާއި، ސްޓޭޝަނަރީ ލިސްޓާއި، ސްކޫލްގެ އެހެނިހެން ލިޔެކިޔުންތައް ޑައުންލޯޑް ކުރުން',
+    },
+    'policies.html': {
+      en: 'Read the school service charter, rules and policies.',
+      dv: 'ސްކޫލް ސާވިސް ޗާޓަރާއި ގަވާއިދުތަކާއި ސިޔާސަތުތައް',
+    },
+    'gallery.html': {
+      en: 'View photos of school life, students and events.',
+      dv: 'ސްކޫލްގެ ދިރިއުޅުމާއި، ދަރިވަރުން އަދި ހަރަކާތްތަކުގެ ފޮޓޯތައް',
+    },
+    'facebook': {
+      en: 'Visit the school Facebook page for news and updates',
+      dv: 'ސްކޫލްގެ ފޭސްބުކް ޞަފްޙާ',
+    },
+    'staff': {
+      en: 'Go to the school staff portal - check sign in/out, attendance and generate overtime slips.',
+      dv: 'މުވައްޒަފުންގެ ޕޯޓަލް - ސައިން އިން/އައުޓް، ހާޒިރީ ޗެކްކޮށް އިތުރުގަޑީގެ ސްލިޕް ޖެނެރޭޓްކުރުން',
+    },
+    'contacts.html': {
+      en: 'School Emails, Telephone and Location',
+      dv: 'ސްކޫލް އީމެއިލްތަކާއި، ފޯނާއި، ހުންނަތަން',
+    },
+  };
+
+  const tooltipLinks = document.querySelectorAll('#nav_buttons_box_desktop > a, #nav_dropdown_content > a');
+  tooltipLinks.forEach((link, index) => {
+    const url = new URL(link.href, window.location.href);
+    let key = url.pathname.split('/').pop().toLowerCase() || 'index.html';
+    if (url.hostname.includes('facebook.com')) key = 'facebook';
+    if (url.hostname.includes('staff.muhyiddin.edu.mv')) key = 'staff';
+
+    const copy = tooltipCopy[key];
+    if (!copy) return;
+
+    const tooltip = document.createElement('span');
+    const english = document.createElement('span');
+    const dhivehi = document.createElement('span');
+    tooltip.className = 'nav_tooltip';
+    tooltip.id = `nav_tooltip_${index}`;
+    tooltip.setAttribute('role', 'tooltip');
+    english.className = 'nav_tooltip_english';
+    english.lang = 'en';
+    english.textContent = copy.en;
+    dhivehi.className = 'nav_tooltip_dhivehi';
+    dhivehi.lang = 'dv';
+    dhivehi.dir = 'rtl';
+    dhivehi.textContent = copy.dv;
+    tooltip.append(english, dhivehi);
+    link.appendChild(tooltip);
+    link.setAttribute('aria-describedby', tooltip.id);
+  });
+
   document.addEventListener('pointerdown', (event) => {
     if (event.button !== 0 || event.pointerType === 'touch') return;
 
