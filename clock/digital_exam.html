@@ -233,10 +233,11 @@ window.onload = function() {
 };
 
 </script>
+    <link rel="stylesheet" href="../styles/image-loading.css">
 </head>
 
 <body>
-<a href="../index.html" style="position:fixed;top:10px;left:10px;z-index:9999;width:200px;"><img src="../imgs/banner_logo_round_border.png" style="width:100%;display:block;" alt="Banner Logo"></a>
+<a href="../index.html" style="position:fixed;top:10px;left:10px;z-index:9999;width:200px;"><img src="../imgs/banner_logo_round_border.png" style="width:100%;display:block;" alt="Banner Logo" loading="eager" decoding="async"></a>
 <div class="clockdate-wrapper">
     <div id="clock"></div>
     <div id="date"></div>
@@ -292,5 +293,6 @@ window.onload = function() {
 
 <center><p id="dev">Developed by Muhyiddin School IT Department</p><center/>
 
+    <script src="../scripts/image-loading.js" defer></script>
 </body>
 </html>

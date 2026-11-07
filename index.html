@@ -11,7 +11,8 @@
 			<link rel="manifest" href="imgs/site.webmanifest" />
 			
 			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
-		</head>
+		    <link rel="stylesheet" href="styles/image-loading.css">
+</head>
 		
 		
 
@@ -28,7 +29,7 @@
 		<body>
 			<!-- Navigation Bar Start-->
 			<div id="nav_bar" class="home_nav">			
-				<a href="index.html"><div  id="nav_logo"><img style="height:100%;" src="imgs/banner_logo.png"/></div></a>				
+				<a href="index.html"><div  id="nav_logo"><img style="height:100%;" src="imgs/banner_logo.png" loading="eager" decoding="async"/></div></a>
 				<div id="nav_buttons_box_desktop">
 								<a href="index.html"><p class="nav_buttons">Home</p></a>
 					<a href="about.html"><p class="nav_buttons"> About </p></a>		
@@ -83,7 +84,7 @@ document.addEventListener('keydown', (event) => {
 					<div id="home_background">
 						<div>
 							<div>
-								<img id="home_main_image" src="imgs/Muh_icon_glow_small.png" alt="Muhyiddin School crest" />
+								<img id="home_main_image" src="imgs/Muh_icon_glow_small.png" alt="Muhyiddin School crest"  loading="eager" decoding="async"/>
 							</div>
 							<p id="home_main_text">
 								<b><wg>MUHYIDDIN SCHOOL</wg></b>
@@ -197,93 +198,38 @@ document.addEventListener('keydown', (event) => {
 
 
 								<div class="news_scroll" id="news_scroll">
-								
-								<!--- 
-								=========
-								 SAMPLES
-								=========
-								
-								1. TO SHOW UP THE DETAILED POPUP ON CLICK
-								
-									<a href="#" class="news_item" onclick="openPolicies(this); return false;">
-										<div class="news_card">
-											<tag>ACADEMIC</tag>
-											<t>(Test) Olevel Exams Started</t>
-											<date>9/9/2026</date>
-										</div>
+    <a href="documents.html" class="news_item">
+      <div class="news_card">
+        <tag>DOCUMENTS</tag>
+        <t>Academic Calendar 2027 Uploaded</t>
+        <date>8/10/2026</date>
+      </div>
+    </a>
 
-										
-										<div class="news_popup_data">
+    <a href="Policies.html" class="news_item">
+      <div class="news_card">
+        <tag>POLICIES</tag>
+        <t>Service Charter Uploaded</t>
+        <date>7/10/2026</date>
+      </div>
+    </a>
 
-											<h2>Olevel Exams Started</h2>
+    <a href="news/imgs/Olevel_Time_Table_2026.png" class="news_item">
+      <div class="news_card">
+        <tag>TIMETABLES</tag>
+        <t>O&#39;Level Exam Timetable 2026</t>
+        <date>17/9/2026</date>
+      </div>
+    </a>
 
-											<img src="schl_imgs/school/muh3.jpg">
-
-											<details>
-												The O-Level examinations have officially commenced at Muhyiddin School.
-
-												Students are reminded to attend all examinations on time and follow the instructions provided by the school and examination authorities.
-
-												We wish all our students the very best in their examinations and encourage them to remain focused and confident throughout the examination period.
-											</details>
-
-										</div>
-									</a>
-									
-									
-									
-								2. TO REDIRECT TO ANOTHER PAGE OR SITE ON CLICK
-									
-									<a href="about.html" class="news_item">
-										<div class="news_card">
-											<tag>INFO</tag>
-											<t>About Us Updated</t>
-											<date>9/9/2026</date>
-										</div>
-									</a>
-								
-								
-								-->
-								
-									<a href="documents.html" class="news_item">
-										<div class="news_card">
-											<tag>DOCUMENTS</tag>
-											<t>Academic Calendar 2027 Uploaded</t>
-											<date>8/10/2026</date>
-										</div>
-									</a>
-									
-									<a href="Policies.html" class="news_item">
-										<div class="news_card">
-											<tag>POLICIES</tag>
-											<t>Service Charter Uploaded</t>
-											<date>7/10/2026</date>
-										</div>
-									</a>
-								
-									<a href="news/imgs/Olevel_Time_Table_2026.png" class="news_item">
-										<div class="news_card">
-											<tag>TIMETABLES</tag>
-											<t>O'Level Exam Timetable 2026</t>
-											<date>17/9/2026</date>
-										</div>
-									</a>
-									
-
-
-								<a href="documents.html" class="news_item">
-										<div class="news_card">
-											<tag>DOCUMENTS</tag>
-											<t>School Uniform Details 2027 Uploaded</t>
-											<date>23/9/2026</date>
-										</div>
-									</a>
-									
-									
-									
-
-
-								</div>
+    <a href="documents.html" class="news_item">
+      <div class="news_card">
+        <tag>DOCUMENTS</tag>
+        <t>School Uniform Details 2027 Uploaded</t>
+        <date>23/9/2026</date>
+      </div>
+    </a>
+  </div>
 
 
 								<!-- Right Button -->
@@ -312,7 +258,7 @@ document.addEventListener('keydown', (event) => {
 
 							<h2 id="news_popup_title"></h2>
 
-							<img id="news_popup_image" src="" alt="">
+							<img id="news_popup_image" src="" alt="" loading="lazy" decoding="async">
 
 							<div id="news_popup_details"></div>
 
@@ -326,7 +272,7 @@ document.addEventListener('keydown', (event) => {
 						<h1 id="info"> </h1>
 						<div class="grid2_box_masonry" id="home_info_grid" style=" margin-top: 50px;">
 						
-								<img class="image scroll_reveal"  src="schl_imgs/school/muh3.jpg">
+								<img class="image scroll_reveal"  src="schl_imgs/school/muh3.jpg" loading="lazy" decoding="async">
 								
 								
 								<div class="light_card"> 
@@ -344,7 +290,7 @@ document.addEventListener('keydown', (event) => {
 										<br/><br/>						
 								</div>
 								
-								<img class="image"  src="schl_imgs/school/new_building.jpg">
+								<img class="image"  src="schl_imgs/school/new_building.jpg" loading="lazy" decoding="async">
 								
 								<div class="light_card"> 
 									<tag>INFORMATION</tag>
@@ -377,7 +323,7 @@ document.addEventListener('keydown', (event) => {
 								</div>
 								
 
-								<img class="image"  src="schl_imgs/school/old_building2.jpg">
+								<img class="image"  src="schl_imgs/school/old_building2.jpg" loading="lazy" decoding="async">
 								
 								
 								<div class="light_card"> 
@@ -422,16 +368,16 @@ document.addEventListener('keydown', (event) => {
 								<div class="light_card_no_padding core_value_card">
 									<center>
 										<span class="core_value_index" aria-hidden="true">1</span>
-										<img class="image_full"  src="schl_imgs/students_praying_mosque_2.jpg">
+										<img class="image_full"  src="schl_imgs/students_praying_mosque_2.jpg" loading="lazy" decoding="async">
 										<h3> Faith In Allah </h3>
-										<h3_d>الله އަށް އީމާންވުން</h3_d>
+										<h3_d>މާތް الله އަށް އީމާންވުން</h3_d>
 									</center>
 								</div>
 								
 								<div class="light_card_no_padding core_value_card">
 									<center>
 										<span class="core_value_index" aria-hidden="true">2</span>
-										<img class="image_full"  src="schl_imgs/muh_compound_small_students.jpg">
+										<img class="image_full"  src="schl_imgs/muh_compound_small_students.jpg" loading="lazy" decoding="async">
 										<h3> Love For The Nation </h3>
 										<h3_d> ވަޠަނީ ލޯބި އުފެއްދުން</h3_d>
 									</center>
@@ -440,7 +386,7 @@ document.addEventListener('keydown', (event) => {
 								<div class="light_card_no_padding core_value_card">
 									<center>
 										<span class="core_value_index" aria-hidden="true">3</span>
-										<img class="image_full"  src="schl_imgs/default2.JPG">
+										<img class="image_full"  src="schl_imgs/default2.JPG" loading="lazy" decoding="async">
 										<h3> Character Building </h3>
 										<h3_d> ޝަޚްޟު ބިނާކުރުން</h3_d>
 									</center>
@@ -449,7 +395,7 @@ document.addEventListener('keydown', (event) => {
 								<div class="light_card_no_padding core_value_card">
 									<center>
 										<span class="core_value_index" aria-hidden="true">4</span>
-										<img class="image_full"  src="schl_imgs/student_helping_another_srudent_wth_chrome_book.jpg">
+										<img class="image_full"  src="schl_imgs/student_helping_another_srudent_wth_chrome_book.jpg" loading="lazy" decoding="async">
 										<h3> Self Directed Learning</h3>
 										<h3_d> އަމިއްލައަށް އުނގެނުމަށް މަސައްކަތްކުރުން</h3_d>
 									</center>
@@ -458,7 +404,7 @@ document.addEventListener('keydown', (event) => {
 								<div class="light_card_no_padding core_value_card">
 									<center>
 										<span class="core_value_index" aria-hidden="true">5</span>
-										<img class="image_full"  src="schl_imgs/student_handshake_with_principal.jpg">
+										<img class="image_full"  src="schl_imgs/student_handshake_with_principal.jpg" loading="lazy" decoding="async">
 										<h3> Respect </h3>
 										<h3_d> އިޙްތިރާމްކުރުން</h3_d>
 									</center>
@@ -487,7 +433,7 @@ document.addEventListener('keydown', (event) => {
 								</t>
 								</br>
 								
-								<img class="image"  src="schl_imgs/facilities/classroom.jpg">	
+								<img class="image"  src="schl_imgs/facilities/classroom.jpg" loading="lazy" decoding="async">
 							</div>
 					
 
@@ -499,7 +445,7 @@ document.addEventListener('keydown', (event) => {
 								</t>
 								</br>
 								
-								<img class="image"  src="schl_imgs/facilities/vocational_lab.jpg">	
+								<img class="image"  src="schl_imgs/facilities/vocational_lab.jpg" loading="lazy" decoding="async">
 							</div>
 						
 										
@@ -556,7 +502,7 @@ document.addEventListener('keydown', (event) => {
     <div class="footer_main">
       <section class="footer_brand" aria-label="Muhyiddin School">
         <a class="footer_brand_link" href="index.html">
-          <img src="imgs/Muh_icon_white.png" alt="" width="54" height="54">
+          <img src="imgs/Muh_icon_white.png" alt="" width="54" height="54" loading="lazy" decoding="async">
           <span>
             <span class="footer_brand_name">Muhyiddin School</span>
             <span class="footer_brand_location">Villimalé, Maldives</span>
@@ -627,6 +573,7 @@ document.addEventListener('keydown', (event) => {
 <script defer src="scripts/home-nav.js"></script>
 <script defer src="scripts/home-stats.js"></script>
 <script defer src="scripts/home-interactions.js"></script>
+    <script src="scripts/image-loading.js" defer></script>
 </body>
 		
 		

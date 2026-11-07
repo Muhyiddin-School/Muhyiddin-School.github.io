@@ -199,6 +199,10 @@ rem ------------------------------------------------------------
 
 copy /Y "%GALLERY_TEMPLATE%" "%ROOT%gallery.html.tmp" >nul
 
+rem The template is nested under sample\gallery; remove its two-level relative prefix for root gallery.html.
+powershell -NoProfile -Command ^
+    "$p='%ROOT%gallery.html.tmp'; $c=Get-Content -Raw -LiteralPath $p; $c=$c.Replace('../../',''); Set-Content -LiteralPath $p -Value $c -NoNewline"
+
 
 rem ============================================================
 rem CREATE ALBUM LIST
@@ -208,6 +212,10 @@ rem ============================================================
 powershell -NoProfile -Command ^
     "$gallery=$env:GALLERY;" ^
     "$output=Join-Path $env:ROOT 'album_list.tmp';" ^
+    "$orderFile=Join-Path $env:ROOT 'MUHYIDDIN_WEBSITE_MANAGER_TOOL\gallery-order.json';" ^
+    "$manualOrder=@{}; if (Test-Path -LiteralPath $orderFile) { $position=0; foreach ($name in @(Get-Content -Raw -LiteralPath $orderFile | ConvertFrom-Json)) { $manualOrder[[string]$name]=$position; $position++ } };" ^
+    "$hiddenFile=Join-Path $env:ROOT 'MUHYIDDIN_WEBSITE_MANAGER_TOOL\gallery-unlisted.txt';" ^
+    "$unlisted=@{}; if (Test-Path -LiteralPath $hiddenFile) { foreach ($name in (Get-Content -LiteralPath $hiddenFile)) { if (-not [string]::IsNullOrWhiteSpace($name)) { $unlisted[[string]$name.Trim()]=$true } } };" ^
     "$q=[char]34;" ^
     "$albums=Get-ChildItem -LiteralPath $gallery -Directory | ForEach-Object {" ^
     "    $folder=$_.Name;" ^
@@ -220,10 +228,11 @@ powershell -NoProfile -Command ^
     "        $dateText=$matches[3].Trim();" ^
     "    }" ^
     "    $cover=Get-ChildItem -LiteralPath $_.FullName -File | Where-Object { $_.Name -match '^cover\.(jpg|jpeg|png|gif|webp)$' } | Select-Object -First 1;" ^
-    "    if ($cover) {" ^
-    "        [PSCustomObject]@{Folder=$folder;Title=$title;DateText=$dateText;Number=$number;Cover=$cover.Name}" ^
+    "    if ($cover -and -not $unlisted.ContainsKey($folder)) {" ^
+    "        $orderPosition=if ($manualOrder.ContainsKey($folder)) { $manualOrder[$folder] } else { -100000-$number };" ^
+    "        [PSCustomObject]@{Folder=$folder;Title=$title;DateText=$dateText;Number=$number;Cover=$cover.Name;Order=$orderPosition}" ^
     "    }" ^
-    "} | Sort-Object Number -Descending;" ^
+    "} | Sort-Object Order, @{Expression='Number';Descending=$true};" ^
     "$html=foreach ($album in $albums) {" ^
     "    '<a href=' + $q + 'gallery/' + $album.Folder + '/view.html' + $q + '>' + [Environment]::NewLine +" ^
     "    '    <div class=' + $q + 'light_card' + $q + '>' + [Environment]::NewLine +" ^

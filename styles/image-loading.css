@@ -1,0 +1,28 @@
+/* Lightweight placeholder for images while their files load. */
+img.image-loading {
+  background-color: #f2e7e7;
+  background-image: linear-gradient(
+    100deg,
+    #f2e7e7 18%,
+    #fff 38%,
+    #f2e7e7 58%
+  );
+  background-size: 220% 100%;
+  animation: image-loading-shimmer 1.35s ease-in-out infinite;
+}
+
+img.image-loaded {
+  animation: none;
+  background-image: none;
+}
+
+@keyframes image-loading-shimmer {
+  to { background-position-x: -220%; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  img.image-loading {
+    animation: none;
+    background-image: linear-gradient(100deg, #f2e7e7, #fff, #f2e7e7);
+  }
+}

@@ -11,7 +11,8 @@
 			<link rel="manifest" href="imgs/site.webmanifest" />
 			
 			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
-		</head>
+		    <link rel="stylesheet" href="styles/image-loading.css">
+</head>
 		
 
 		<!-- Google tag (gtag.js) -->
@@ -38,7 +39,7 @@
 		
 			<!-- Navigation Bar Start-->
 			<div id="nav_bar">			
-				<a href="index.html"><div  id="nav_logo"><img style="height:100%;" src="imgs/banner_logo.png"/></div></a>				
+				<a href="index.html"><div  id="nav_logo"><img style="height:100%;" src="imgs/banner_logo.png" loading="eager" decoding="async"/></div></a>
 				<div id="nav_buttons_box_desktop">
 								<a href="index.html"><p class="nav_buttons">Home</p></a>
 					<a href="about.html"><p class="nav_buttons"> About </p></a>		
@@ -94,56 +95,48 @@ document.addEventListener('keydown', (event) => {
 				
 					<div class="restricted_width_box" >
 					
-						<div class="light_card"> 
-							<div class="eng_dhiv_heading_box">
-								<h4>Academic Calendar</h4>
-								<h4_d> އެކަޑަމިކް ކެލަންޑަރ</h4_d>
-							</div>
-							
-							<a href="documents/Academic_Calendar/Academic_Calendar_2027.pdf">
-								<t class="doc_content">Academic Calendar 2027 </t>
-							</a>
-						
-							<a href="documents/Academic_Calendar/Academic_Calendar_2026.pdf">
-								<t class="doc_content">Academic Calendar 2026 </t>
-							</a>
-					
-						</div>
-						</br></br>
-					
-					
-						<div class="light_card"> 
-							<div class="eng_dhiv_heading_box">
-								<h4>School Uniform</h4>
-								<h4_d> ސްކޫލް ޔުނީފޯމު</h4_d>
-							</div>
-							
-							<a href="documents/School Uniform/uniform details 2027- parents.pdf">
-								<t class="doc_content">Uniform Details 2027 </t>
-							</a>
-						
-							<a href="documents/School Uniform/uniform details 2026 (Eng) and divehi.pdf">
-								<t class="doc_content">Uniform Details 2026 </t>
-							</a>
-					
-						</div>
-						</br></br>
-					
+						<div class="light_card">
+  <div class="eng_dhiv_heading_box">
+    <h4>Academic Calendar</h4>
+    <h4_d>އެކަޑަމިކް ކެލަންޑަރ</h4_d>
+  </div>
+  <a href="documents/Academic_Calendar/Academic_Calendar_2027.pdf">
+    <t class="doc_content">Academic Calendar 2027</t>
+  </a>
+  <a href="documents/Academic_Calendar/Academic_Calendar_2026.pdf">
+    <t class="doc_content">Academic Calendar 2026</t>
+  </a>
+</div>
 
-						<div class="light_card"> 
-							<div class="eng_dhiv_heading_box">
-								<h4>Stationary Lists</h4>
-								<h4_d> ސްޓޭޝަނަރީ ލިސްޓް</h4_d>
-							</div>
-						
-							<a href="documents/Stationary Lists/baby nursery stationery list 2026.pdf">
-								<t class="doc_content">Baby Nursery Stationery List 2026</t>
-							</a>
-							
-							<a href="documents/Stationary Lists/nursery stationery list 2026.pdf">
-								<t class="doc_content">Nursery Stationery List 2026</t>
-							</a>
-						</div>
+    <br/><br/>
+
+<div class="light_card">
+  <div class="eng_dhiv_heading_box">
+    <h4>School Uniform</h4>
+    <h4_d>ސްކޫލް ޔުނީފޯމު</h4_d>
+  </div>
+  <a href="documents/School Uniform/uniform details 2027- parents.pdf">
+    <t class="doc_content">Uniform Details 2027</t>
+  </a>
+  <a href="documents/School Uniform/uniform details 2026 (Eng) and divehi.pdf">
+    <t class="doc_content">Uniform Details 2026</t>
+  </a>
+</div>
+
+    <br/><br/>
+
+<div class="light_card">
+  <div class="eng_dhiv_heading_box">
+    <h4>Stationary Lists</h4>
+    <h4_d>ސްޓޭޝަނަރީ ލިސްޓް</h4_d>
+  </div>
+  <a href="documents/Stationary Lists/baby nursery stationery list 2026.pdf">
+    <t class="doc_content">Baby Nursery Stationery List 2026</t>
+  </a>
+  <a href="documents/Stationary Lists/nursery stationery list 2026.pdf">
+    <t class="doc_content">Nursery Stationery List 2026</t>
+  </a>
+</div>
 						</br></br>
 					
 						
@@ -155,7 +148,7 @@ document.addEventListener('keydown', (event) => {
     <div class="footer_main">
       <section class="footer_brand" aria-label="Muhyiddin School">
         <a class="footer_brand_link" href="index.html">
-          <img src="imgs/Muh_icon_white.png" alt="" width="54" height="54">
+          <img src="imgs/Muh_icon_white.png" alt="" width="54" height="54" loading="lazy" decoding="async">
           <span>
             <span class="footer_brand_name">Muhyiddin School</span>
             <span class="footer_brand_location">Villimalé, Maldives</span>
@@ -223,6 +216,7 @@ document.addEventListener('keydown', (event) => {
 <script defer src="scripts/footer-year.js"></script>
 		
 		<script defer src="scripts/nav-bubble.js"></script>
+    <script src="scripts/image-loading.js" defer></script>
 </body>
 	</html>
 

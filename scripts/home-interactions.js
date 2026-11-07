@@ -16,6 +16,7 @@ window.openPolicies = function (item) {
 
   document.getElementById('news_popup_title').textContent = title.textContent;
   const popupImage = document.getElementById('news_popup_image');
+  popupImage.loading = 'eager';
   popupImage.src = image.src;
   popupImage.alt = image.alt;
   document.getElementById('news_popup_details').innerHTML = details.innerHTML;

@@ -482,6 +482,7 @@ body{
 }
 
 </style>
+    <link rel="stylesheet" href="../styles/image-loading.css">
 </head>
 
 <body>
@@ -496,7 +497,7 @@ body{
     <img
         src="../imgs/banner_logo_round_border.png"
         alt="Banner Logo"
-    >
+     loading="eager" decoding="async">
 
 </a>
 
@@ -840,5 +841,6 @@ update();
 
 </script>
 
+    <script src="../scripts/image-loading.js" defer></script>
 </body>
 </html>
