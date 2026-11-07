@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+	<html>
+		<head>
+			<title>Gallery | Muhyiddin School </title>
+			<meta charset="utf-8">
+			<link rel="icon" type="image/png" href="../../imgs/favicon-96x96.png" sizes="96x96" />
+			<link rel="icon" type="image/svg+xml" href="../../imgs/favicon.svg" />
+			<link rel="shortcut icon" href="../../imgs/favicon.ico" />
+			<link rel="apple-touch-icon" sizes="180x180" href="../../imgs/apple-touch-icon.png" />
+			<meta name="apple-mobile-web-app-title" content="MyWebSite" />
+			<link rel="manifest" href="../../imgs/site.webmanifest" />
+			
+			<meta name="viewport" content="width=device-width, initial-scale=0.8, shrink-to-fit=yes">
+		    <link rel="stylesheet" href="../../styles/image-loading.css">
+</head>
+		
+
+		<!-- Google tag (gtag.js) -->
+		
+		
+		<link rel="stylesheet" href="../../styles/fonts.css"/>
+		<link rel="stylesheet" href="../../styles/universal.css"/>
+		<link rel="stylesheet" href="../../styles/docs.css"/>
+		
+		<style type="text/css">
+			t {
+				margin-top:20px;
+				margin-bottom:20px;
+			}
+			
+		
+		</style>
+		
+		<body>
+		
+			<!-- Navigation Bar Start-->
+			<div id="nav_bar">			
+				<a href="../../index.html"><div  id="nav_logo"><img style="height:100%;" src="../../imgs/banner_logo.png" loading="eager" decoding="async"/></div></a>
+				<div id="nav_buttons_box_desktop">
+								<a href="../../index.html"><p class="nav_buttons">Home</p></a>
+					<a href="../../about.html"><p class="nav_buttons"> About </p></a>		
+					<a href="../../forms.html"><p class="nav_buttons"> Forms </p></a>					
+					<a href="../../documents.html"><p class="nav_buttons"> Documents </p></a>
+					<a href="../../gallery.html"><p class="nav_buttons"> Gallery </p></a>
+					<a href="../../Policies.html"><p class="nav_buttons"> Policies </p></a>
+					<a href="https://www.facebook.com/muhyiddinschool"><p class="nav_buttons">Facebook</p></a>	
+					<a href="https://staff.muhyiddin.edu.mv/"><p class="nav_buttons"> Staff Portal </p></a>
+					<a href="../../contacts.html"><p class="nav_buttons"> Contact Us </p></a>
+				</div>						
+				
+				<button id="nav_dropdown_button" type="button" aria-label="Open navigation menu" aria-controls="nav_dropdown_content" aria-expanded="false">
+				<svg id="nav_dropdown_more_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>	
+				<svg id="nav_dropdown_close_icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>		
+				</button>			
+			</div>
+			<div id="nav_dropdown_content">
+				<a href="../../index.html">Home</a>
+				<a href="../../about.html">About</a>
+				<a href="../../forms.html">Forms</a>
+				<a href="../../documents.html">Documents</a>
+				<a href="../../gallery.html">Gallery</a>
+				<a href="../../Policies.html">Policies</a>
+				<a href="https://www.facebook.com/muhyiddinschool">Facebook</a>
+				<a href="https://staff.muhyiddin.edu.mv/">Staff Portal</a>
+				<a href="../../contacts.html">Contact Us</a>
+			</div>	
+			<script type="text/javascript">
+				const dropdownButton = document.getElementById('nav_dropdown_button');
+const dropdownContent = document.getElementById('nav_dropdown_content');
+function setNavigationOpen(open) {
+  dropdownButton.classList.toggle('is-open', open);
+  dropdownContent.classList.toggle('is-open', open);
+  dropdownButton.setAttribute('aria-expanded', String(open));
+  dropdownButton.setAttribute('aria-label', open ? 'Close navigation menu' : 'Open navigation menu');
+}
+dropdownButton.addEventListener('click', () => setNavigationOpen(!dropdownContent.classList.contains('is-open')));
+dropdownContent.querySelectorAll('a').forEach((link) => link.addEventListener('click', () => setNavigationOpen(false)));
+document.addEventListener('pointerdown', (event) => {
+  if (!dropdownButton.contains(event.target) && !dropdownContent.contains(event.target)) setNavigationOpen(false);
+});
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape' && dropdownContent.classList.contains('is-open')) {
+    setNavigationOpen(false);
+    dropdownButton.focus();
+  }
+});</script>
+			<!-- Navigation Bar End-->
+				
+			<main>	
+					<br/>
+					<br/>
+					<doc_h1>Preschool Sports Meet</doc_h1>
+					<doc_date>Published: 2-11-2026</doc_date>
+				
+					<div class="restricted_width_box">
+					
+						<div class="grid2_box_masonry" style=" margin-top: 50px;" id="page_images">
+						
+						
+							            <img class="image" src="cover.jpg" loading="lazy" decoding="async">
+            <img class="image" src="photo-001.jpg" loading="lazy" decoding="async">
+            <img class="image" src="photo-002.jpg" loading="lazy" decoding="async">
+            <img class="image" src="photo-003.jpg" loading="lazy" decoding="async">
+            <img class="image" src="photo-004.jpg" loading="lazy" decoding="async">
+            <img class="image" src="photo-005.jpg" loading="lazy" decoding="async">
+            <img class="image" src="photo-006.jpg" loading="lazy" decoding="async">
+            <img class="image" src="photo-007.jpg" loading="lazy" decoding="async">
+            <img class="image" src="photo-008.jpg" loading="lazy" decoding="async">
+							
+							
+						</div>
+						
+						
+						<div class="grid_2button_left">
+								<a href="../../gallery.html"><p class="muh_button" >Back</p></a>
+							</div>
+						
+						</br></br>
+						</br></br>
+						
+						
+
+					</div>
+					</br></br>
+	
+					
+
+			</main>
+			
+			<footer class="site_footer">
+  <div class="footer_container">
+    <div class="footer_main">
+      <section class="footer_brand" aria-label="Muhyiddin School">
+        <a class="footer_brand_link" href="../../index.html">
+          <img src="../../imgs/Muh_icon_white.png" alt="" width="54" height="54" loading="lazy" decoding="async">
+          <span>
+            <span class="footer_brand_name">Muhyiddin School</span>
+            <span class="footer_brand_location">Villimalé, Maldives</span>
+          </span>
+        </a>
+        <p class="footer_motto">Strive for Success</p>
+        <p class="footer_intro">Supporting learners from preschool through Grade 10.</p>
+        <a class="footer_contact_button" href="../../contacts.html">Contact the School <span aria-hidden="true">↗</span></a>
+      </section>
+
+      <nav class="footer_column" aria-label="Explore">
+        <h2 class="footer_heading">Explore</h2>
+        <ul class="footer_nav_list">
+          <li><a href="../../index.html">Home</a></li>
+          <li><a href="../../about.html">About School</a></li>
+          <li><a href="../../about/facilities.html">Our Facilities</a></li>
+          <li><a href="../../news.html">News</a></li>
+          <li><a href="../../contacts.html">Contact Us</a></li>
+        </ul>
+      </nav>
+
+      <nav class="footer_column" aria-label="School resources">
+        <h2 class="footer_heading">School Resources</h2>
+        <ul class="footer_nav_list">
+          <li><a href="../../forms.html">Forms</a></li>
+          <li><a href="../../documents.html">Documents</a></li>
+          <li><a href="../../Policies.html">Policies</a></li>
+          <li><a href="../../gallery.html">Gallery</a></li>
+          <li><a href="../../tools.html">School Tools</a></li>
+          <li><a href="https://staff.muhyiddin.edu.mv/">Staff Portal</a></li>
+          <li><a href="https://www.facebook.com/muhyiddinschool">Facebook</a></li>
+        </ul>
+      </nav>
+
+      <address class="footer_contact_column">
+        <h2 class="footer_heading">Contact</h2>
+        <div class="footer_contact_list">
+          <div class="footer_contact_item">
+            <span class="footer_contact_icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" stroke="currentColor" stroke-width="1.7"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="1.7"/></svg></span>
+            <span>Muhyiddin School, Askaree Hingun, K. Villimalé, Maldives</span>
+          </div>
+          <a class="footer_contact_item" href="mailto:info@muhyiddin.edu.mv">
+            <span class="footer_contact_icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><rect x="3" y="5" width="18" height="14" rx="2" stroke="currentColor" stroke-width="1.7"/><path d="m4 7 8 6 8-6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span>info@muhyiddin.edu.mv</span>
+          </a>
+          <a class="footer_contact_item" href="tel:+9603390634">
+            <span class="footer_contact_icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3h3l2 5-2.2 1.8a15 15 0 0 0 4.4 4.4L16 12l5 2v3c0 1.1-.9 2-2 2C10.2 19 5 13.8 5 5c0-1.1.9-2 2-2Z" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <span>+960 339-0634 · +960 339-0635</span>
+          </a>
+        </div>
+      </address>
+    </div>
+
+    <div class="footer_bottom">
+      <p>© <span data-footer-year>2026</span> Muhyiddin School. All rights reserved.</p>
+      <nav class="footer_legal_links" aria-label="Legal and site information">
+        <a href="../../legal/privacy_policy.html">Privacy Policy</a>
+        <a href="../../credits.html">Credits</a>
+        <a href="https://Muhyiddin-School.github.io/sitemap.xml">Sitemap</a>
+        <a href="../../LICENSE.md">MIT License</a>
+      </nav>
+    </div>
+  </div>
+</footer>
+<script defer src="../../scripts/footer-year.js"></script>
+		
+		<script defer src="../../scripts/nav-bubble.js"></script>
+    <script src="../../scripts/image-loading.js" defer></script>
+</body>
+	</html>
+
+
