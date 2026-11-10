@@ -1114,7 +1114,7 @@ $top.Add_Paint({ param($sender, $e) $b=[Drawing.Drawing2D.LinearGradientBrush]::
 $script:form.Controls.Add($top)
 $brand = New-UiLabel 'MUHYIDDIN SCHOOL' 94 12 420 18
 $brand.ForeColor = [Drawing.Color]::FromArgb(255, 231, 231); $brand.BackColor = [Drawing.Color]::Transparent; $brand.Font = [Drawing.Font]::new('Segoe UI Semibold', 8.5); $top.Controls.Add($brand)
-$title = New-UiLabel 'Website Manager' 92 31 500 40
+$title = New-UiLabel 'Website Manager (Embedded) v1.0.0' 92 31 500 40
 $title.ForeColor = [Drawing.Color]::White; $title.BackColor = [Drawing.Color]::Transparent; $title.Font = [Drawing.Font]::new('Segoe UI Semibold', 21); $top.Controls.Add($title)
 $credit = New-UiLabel 'Developed by saaiqSAS, backed by Codex' 700 54 430 18 $true
 $credit.ForeColor = [Drawing.Color]::FromArgb(255, 232, 232); $credit.BackColor = [Drawing.Color]::Transparent; $credit.TextAlign = 'MiddleRight'; $credit.Font = [Drawing.Font]::new('Segoe UI', 8.5); $top.Controls.Add($credit)
